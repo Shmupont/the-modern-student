@@ -6,8 +6,8 @@
 // ============================================
 // SUPABASE CLIENT INITIALIZATION
 // ============================================
-const SUPABASE_URL = 'https://your-project.supabase.co'; // Replace with your Supabase URL
-const SUPABASE_ANON_KEY = 'your-anon-key'; // Replace with your Supabase anon key
+const SUPABASE_URL = 'https://quadnjgbysjloucnimaa.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_DeKnIKQ4UnfV-vVrQNV3Dg_8bBpErF7';
 
 // Initialize Supabase client (uses the global supabase object from CDN)
 const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;

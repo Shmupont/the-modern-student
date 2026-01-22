@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirming... — The Modern Student</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-icon" id="statusIcon">
+                        <div class="spinner-large"></div>
+                    </div>
+                    <h1 id="statusTitle">Confirming your email...</h1>
+                    <p id="statusMessage">Please wait while we verify your account.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .spinner-large {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--color-border-subtle);
+            border-top-color: var(--color-accent-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .auth-icon.success svg {
+            width: 48px;
+            height: 48px;
+            color: var(--color-accent-green);
+        }
+        .auth-icon.error svg {
+            width: 48px;
+            height: 48px;
+            color: var(--color-accent-red, #ef4444);
+        }
+    </style>
+
+    <script src="../assets/supabase.js"></script>
+    <script>
+        async function handleAuthCallback() {
+            const statusIcon = document.getElementById('statusIcon');
+            const statusTitle = document.getElementById('statusTitle');
+            const statusMessage = document.getElementById('statusMessage');
+
+            try {
+                // Check for error in URL params
+                const params = new URLSearchParams(window.location.search);
+                const hashParams = new URLSearchParams(window.location.hash.substring(1));
+
+                const error = params.get('error') || hashParams.get('error');
+                const errorDescription = params.get('error_description') || hashParams.get('error_description');
+
+                if (error) {
+                    throw new Error(errorDescription || error);
+                }
+
+                // Get the session - Supabase client will automatically handle the tokens from URL
+                const { data: { session }, error: sessionError } = await TMS_Auth.client.auth.getSession();
+
+                if (sessionError) {
+                    throw sessionError;
+                }
+
+                if (session) {
+                    // Success - user is logged in
+                    statusIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                    statusIcon.className = 'auth-icon success';
+                    statusTitle.textContent = 'Email confirmed!';
+                    statusMessage.textContent = 'Redirecting you to the portal...';
+
+                    // Redirect after a short delay
+                    setTimeout(() => {
+                        window.location.href = '../portal/index.html';
+                    }, 1500);
+                } else {
+                    // No session but no error - might need to exchange code
+                    // Try to exchange the code if present
+                    const code = params.get('code');
+                    if (code) {
+                        const { data, error: exchangeError } = await TMS_Auth.client.auth.exchangeCodeForSession(code);
+                        if (exchangeError) {
+                            throw exchangeError;
+                        }
+
+                        statusIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                        statusIcon.className = 'auth-icon success';
+                        statusTitle.textContent = 'Email confirmed!';
+                        statusMessage.textContent = 'Redirecting you to the portal...';
+
+                        setTimeout(() => {
+                            window.location.href = '../portal/index.html';
+                        }, 1500);
+                    } else {
+                        // No code, no session - redirect to login
+                        statusTitle.textContent = 'Confirmation complete';
+                        statusMessage.textContent = 'Redirecting to login...';
+                        setTimeout(() => {
+                            window.location.href = '../login.html';
+                        }, 1500);
+                    }
+                }
+            } catch (err) {
+                console.error('Auth callback error:', err);
+                statusIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+                statusIcon.className = 'auth-icon error';
+                statusTitle.textContent = 'Something went wrong';
+                statusMessage.innerHTML = `${err.message || 'Failed to confirm email.'}<br><br><a href="../login.html" class="btn btn-primary">Go to Login</a>`;
+            }
+        }
+
+        // Run on page load
+        handleAuthCallback();
+    </script>
+</body>
+</html>

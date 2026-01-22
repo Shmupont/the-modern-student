@@ -17,11 +17,16 @@ const PORTAL_STORAGE = {
 };
 
 // ============================================
-// CACHED DATA
+// PORTAL STATE
 // ============================================
-let cachedUserEmail = null;
-let cachedAccessType = null; // 'course' or 'member'
-let cachedProgress = null;
+const PortalState = {
+    userEmail: null,
+    accessType: null, // 'course' or 'member'
+    progress: null,
+    isLoading: true,
+    hasAccess: false,
+    error: null
+};
 
 // ============================================
 // ACCESS GUARD (Supabase-Based with Token Fallback)
@@ -89,50 +94,82 @@ async function hasMemberAccess() {
 }
 
 async function checkPortalAccess() {
-    // Check Supabase session first
-    if (window.TMS_Auth) {
-        const session = await TMS_Auth.getSession();
+    PortalState.isLoading = true;
+    PortalState.error = null;
+    updateAccountDropdown(); // Show loading state
 
-        if (session) {
-            // Store user email immediately from session
-            cachedUserEmail = session.user.email;
+    try {
+        // Check Supabase session first
+        if (window.TMS_Auth) {
+            // Wait for Supabase to initialize
+            await TMS_Auth.init();
 
-            // User is logged in, check entitlements
-            const entitlements = await TMS_Auth.getEntitlements();
+            const session = await TMS_Auth.getSession();
 
-            if (entitlements && (entitlements.course_access || entitlements.member_access)) {
-                // Store access type for UI
-                cachedAccessType = entitlements.member_access ? 'member' : 'course';
-                updateAccountDropdown();
-                return true;
+            if (session) {
+                // Store user email immediately from session
+                PortalState.userEmail = session.user.email;
+                updateAccountDropdown(); // Update with email while checking entitlements
+
+                // User is logged in, check entitlements
+                const entitlements = await TMS_Auth.getEntitlements();
+
+                if (entitlements && (entitlements.course_access || entitlements.member_access)) {
+                    // Store access type for UI
+                    PortalState.accessType = entitlements.member_access ? 'member' : 'course';
+                    PortalState.hasAccess = true;
+                    PortalState.isLoading = false;
+                    updateAccountDropdown();
+                    return true;
+                } else {
+                    // Logged in but no entitlements
+                    PortalState.accessType = null;
+                    PortalState.hasAccess = false;
+                    PortalState.isLoading = false;
+                    updateAccountDropdown();
+                    showLockedState();
+                    return false;
+                }
             } else {
-                // Logged in but no entitlements - still update dropdown with email
-                cachedAccessType = null;
-                updateAccountDropdown();
-                showLockedState();
+                // Not logged in - check legacy tokens first
+                if (hasValidAccessSync()) {
+                    // Has legacy access
+                    PortalState.hasAccess = true;
+                    PortalState.isLoading = false;
+                    PortalState.userEmail = 'Guest';
+                    PortalState.accessType = 'course';
+                    updateAccountDropdown();
+                    return true;
+                }
+
+                // No session, redirect to login
+                PortalState.isLoading = false;
+                window.location.href = '../login.html?redirect=' + encodeURIComponent(window.location.pathname);
                 return false;
             }
-        } else {
-            // Not logged in - check legacy tokens first
-            if (hasValidAccessSync()) {
-                // Has legacy access - show upgrade prompt eventually
-                return true;
-            }
-
-            // No session, redirect to login
-            window.location.href = '../login.html?redirect=' + encodeURIComponent(window.location.pathname);
-            return false;
         }
-    }
 
-    // Fallback: localStorage token check
-    if (hasValidAccessSync()) {
-        return true;
-    }
+        // Fallback: localStorage token check
+        if (hasValidAccessSync()) {
+            PortalState.hasAccess = true;
+            PortalState.isLoading = false;
+            PortalState.userEmail = 'Guest';
+            PortalState.accessType = 'course';
+            updateAccountDropdown();
+            return true;
+        }
 
-    // No valid access
-    showLockedState();
-    return false;
+        // No valid access
+        PortalState.isLoading = false;
+        showLockedState();
+        return false;
+    } catch (err) {
+        console.error('Portal access check failed:', err);
+        PortalState.error = err.message || 'Failed to verify access';
+        PortalState.isLoading = false;
+        updateAccountDropdown();
+        return false;
+    }
 }
 
 function showLockedState() {
@@ -186,19 +223,19 @@ async function getProgress() {
     // Use Supabase if available
     if (window.TMS_Auth) {
         const progress = await TMS_Auth.getProgress();
-        cachedProgress = progress;
+        PortalState.progress = progress;
         return progress;
     }
 
     // Fallback to localStorage
     const stored = localStorage.getItem(PORTAL_STORAGE.PROGRESS);
-    cachedProgress = stored ? JSON.parse(stored) : {};
-    return cachedProgress;
+    PortalState.progress = stored ? JSON.parse(stored) : {};
+    return PortalState.progress;
 }
 
 function getProgressSync() {
     // Return cached progress or fetch from localStorage
-    if (cachedProgress) return cachedProgress;
+    if (PortalState.progress) return PortalState.progress;
     const stored = localStorage.getItem(PORTAL_STORAGE.PROGRESS);
     return stored ? JSON.parse(stored) : {};
 }
@@ -212,8 +249,8 @@ async function markLessonComplete(lessonId) {
         const success = await TMS_Auth.markLessonComplete(lessonId);
         if (success) {
             // Update cache
-            if (!cachedProgress) cachedProgress = {};
-            cachedProgress[lessonId] = { completed: true, completedAt: Date.now() };
+            if (!PortalState.progress) PortalState.progress = {};
+            PortalState.progress[lessonId] = { completed: true, completedAt: Date.now() };
             updateProgressUI();
             showToast('Lesson marked as complete!', 'success');
             return true;
@@ -227,7 +264,7 @@ async function markLessonComplete(lessonId) {
         completedAt: Date.now()
     };
     saveProgressLocal(progress);
-    cachedProgress = progress;
+    PortalState.progress = progress;
     updateProgressUI();
     showToast('Lesson marked as complete!', 'success');
     return true;
@@ -238,8 +275,8 @@ async function markLessonIncomplete(lessonId) {
         const success = await TMS_Auth.markLessonIncomplete(lessonId);
         if (success) {
             // Update cache
-            if (cachedProgress) {
-                delete cachedProgress[lessonId];
+            if (PortalState.progress) {
+                delete PortalState.progress[lessonId];
             }
             updateProgressUI();
             return true;
@@ -250,7 +287,7 @@ async function markLessonIncomplete(lessonId) {
     const progress = getProgressSync();
     delete progress[lessonId];
     saveProgressLocal(progress);
-    cachedProgress = progress;
+    PortalState.progress = progress;
     updateProgressUI();
     return true;
 }
@@ -553,7 +590,7 @@ function initPreferenceToggles() {
 // ============================================
 function exportProgress() {
     const data = {
-        progress: getProgress(),
+        progress: getProgressSync(),
         favorites: getFavorites(),
         checklist: getChecklist(),
         savedWorkflows: getSavedWorkflows(),
@@ -578,7 +615,7 @@ function importProgress(file) {
         try {
             const data = JSON.parse(e.target.result);
 
-            if (data.progress) saveProgress(data.progress);
+            if (data.progress) saveProgressLocal(data.progress);
             if (data.favorites) saveFavorites(data.favorites);
             if (data.checklist) saveChecklist(data.checklist);
             if (data.savedWorkflows) localStorage.setItem(PORTAL_STORAGE.SAVED_WORKFLOWS, JSON.stringify(data.savedWorkflows));
@@ -713,9 +750,9 @@ async function logout() {
         localStorage.removeItem('tms_access_tier');
 
         // Clear cached data
-        cachedUserEmail = null;
-        cachedAccessType = null;
-        cachedProgress = null;
+        PortalState.userEmail = null;
+        PortalState.accessType = null;
+        PortalState.progress = null;
 
         window.location.href = '../index.html';
     }
@@ -731,23 +768,61 @@ function updateAccountDropdown() {
     const emailEl = dropdown.querySelector('.account-email');
     const avatarEl = dropdown.querySelector('.account-avatar');
     const badgeEl = dropdown.querySelector('.account-badge');
+    const trigger = dropdown.querySelector('.account-trigger');
 
-    if (cachedUserEmail && emailEl) {
-        emailEl.textContent = cachedUserEmail;
+    // Handle loading state
+    if (PortalState.isLoading) {
+        if (emailEl) emailEl.textContent = 'Loading...';
+        if (avatarEl) avatarEl.textContent = '...';
+        if (badgeEl) badgeEl.style.display = 'none';
+        return;
+    }
+
+    // Handle error state
+    if (PortalState.error) {
+        if (emailEl) emailEl.textContent = 'Error';
+        if (avatarEl) avatarEl.textContent = '!';
+        if (badgeEl) {
+            badgeEl.textContent = 'Retry';
+            badgeEl.className = 'account-badge error';
+            badgeEl.style.display = '';
+        }
+        // Add retry handler
+        if (trigger) {
+            trigger.onclick = async (e) => {
+                e.preventDefault();
+                PortalState.error = null;
+                await checkPortalAccess();
+            };
+        }
+        return;
+    }
+
+    // Handle normal state
+    if (PortalState.userEmail && emailEl) {
+        emailEl.textContent = PortalState.userEmail;
         if (avatarEl) {
-            avatarEl.textContent = cachedUserEmail.charAt(0).toUpperCase();
+            avatarEl.textContent = PortalState.userEmail.charAt(0).toUpperCase();
         }
     }
 
     if (badgeEl) {
-        if (cachedAccessType) {
-            badgeEl.textContent = cachedAccessType === 'member' ? 'Member' : 'Course';
-            badgeEl.className = 'account-badge ' + cachedAccessType;
+        if (PortalState.accessType) {
+            badgeEl.textContent = PortalState.accessType === 'member' ? 'Member' : 'Course';
+            badgeEl.className = 'account-badge ' + PortalState.accessType;
             badgeEl.style.display = '';
         } else {
-            // No access - hide badge or show different state
             badgeEl.style.display = 'none';
         }
+    }
+
+    // Ensure click handler is set for dropdown toggle
+    if (trigger && !trigger._dropdownInitialized) {
+        trigger._dropdownInitialized = true;
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
     }
 }
 
@@ -758,10 +833,14 @@ function initAccountDropdown() {
     const trigger = dropdown.querySelector('.account-trigger');
     if (!trigger) return;
 
-    trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('open');
-    });
+    // Only add event listener if not already added
+    if (!trigger._dropdownInitialized) {
+        trigger._dropdownInitialized = true;
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+    }
 
     // Close on click outside
     document.addEventListener('click', (e) => {
@@ -775,6 +854,20 @@ function initAccountDropdown() {
         if (e.key === 'Escape') {
             dropdown.classList.remove('open');
         }
+    });
+
+    // Handle keyboard navigation
+    const menuItems = dropdown.querySelectorAll('.account-menu-item');
+    menuItems.forEach((item, index) => {
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' && index < menuItems.length - 1) {
+                e.preventDefault();
+                menuItems[index + 1].focus();
+            } else if (e.key === 'ArrowUp' && index > 0) {
+                e.preventDefault();
+                menuItems[index - 1].focus();
+            }
+        });
     });
 }
 
@@ -839,8 +932,15 @@ function initLessonPage() {
 // INITIALIZATION
 // ============================================
 async function initPortal() {
-    // Check access first (async)
+    // Initialize dropdown first so it's ready for loading state
+    initAccountDropdown();
+
+    // Check access (async)
     const hasAccess = await checkPortalAccess();
+
+    // Always initialize sidebar and other UI elements
+    initSidebarToggle();
+
     if (!hasAccess) return;
 
     // Load progress from Supabase
@@ -850,12 +950,10 @@ async function initPortal() {
     applyPreferences();
 
     // Initialize components
-    initSidebarToggle();
     initSearch();
     initFilters();
     initCopyButtons();
     initPreferenceToggles();
-    initAccountDropdown();
 
     // Update UI
     updateProgressUI();
@@ -903,5 +1001,8 @@ window.Portal = {
     unsaveWorkflow,
     exportProgress,
     importProgress,
-    logout
+    logout,
+    getProgressSync,
+    getProgressPercent,
+    getCompletedCount
 };

@@ -4,6 +4,10 @@
   publish = "."
   functions = "netlify/functions"
 
+# Install dependencies inside functions folder
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
 # Redirect API calls to functions
 [[redirects]]
   from = "/api/*"

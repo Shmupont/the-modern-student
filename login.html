@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — The Modern Student</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Welcome back</h1>
+                    <p>Sign in to access your portal</p>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Enter your password">
+                    </div>
+
+                    <div id="errorMessage" class="auth-error" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" style="width: 100%;">
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <a href="#" onclick="showForgotPassword(); return false;" class="auth-link">Forgot password?</a>
+                    <span class="auth-divider">|</span>
+                    <a href="signup.html" class="auth-link">Create an account</a>
+                </div>
+            </div>
+
+            <!-- Forgot Password Modal -->
+            <div id="forgotPasswordModal" class="auth-card" style="display: none;">
+                <div class="auth-header">
+                    <h1>Reset password</h1>
+                    <p>Enter your email to receive a reset link</p>
+                </div>
+
+                <form id="forgotPasswordForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="resetEmail">Email</label>
+                        <input type="email" id="resetEmail" name="email" required autocomplete="email" placeholder="you@example.com">
+                    </div>
+
+                    <div id="resetMessage" class="auth-success" style="display: none;"></div>
+                    <div id="resetError" class="auth-error" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" id="resetBtn" style="width: 100%;">
+                        Send Reset Link
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <a href="#" onclick="hideForgotPassword(); return false;" class="auth-link">Back to login</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/main.js"></script>
+    <script src="assets/supabase.js"></script>
+    <script>
+        // Pre-fill email from URL param
+        const urlParams = new URLSearchParams(window.location.search);
+        const emailParam = urlParams.get('email');
+        if (emailParam) {
+            document.getElementById('email').value = emailParam;
+        }
+
+        // Check if already logged in
+        async function checkExistingSession() {
+            const session = await TMS_Auth.getSession();
+            if (session) {
+                // Already logged in, redirect to portal
+                window.location.href = 'portal/index.html';
+            }
+        }
+        checkExistingSession();
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Reset error state
+            errorDiv.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing in...';
+
+            const { data, error } = await TMS_Auth.signIn(email, password);
+
+            if (error) {
+                errorDiv.textContent = error.message || 'Failed to sign in. Please try again.';
+                errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign In';
+                return;
+            }
+
+            // Check if user has access
+            const hasAccess = await TMS_Auth.hasValidAccess();
+
+            if (hasAccess) {
+                // Redirect to portal
+                const redirect = urlParams.get('redirect') || 'portal/index.html';
+                window.location.href = redirect;
+            } else {
+                // No entitlements - show message with link to pricing
+                errorDiv.innerHTML = 'No active subscription found. <a href="pricing.html" style="color: var(--color-accent-purple);">Get access</a>';
+                errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign In';
+            }
+        });
+
+        // Forgot password handlers
+        function showForgotPassword() {
+            document.getElementById('loginForm').parentElement.style.display = 'none';
+            document.getElementById('forgotPasswordModal').style.display = 'block';
+        }
+
+        function hideForgotPassword() {
+            document.getElementById('forgotPasswordModal').style.display = 'none';
+            document.getElementById('loginForm').parentElement.style.display = 'block';
+        }
+
+        document.getElementById('forgotPasswordForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('resetEmail').value;
+            const messageDiv = document.getElementById('resetMessage');
+            const errorDiv = document.getElementById('resetError');
+            const submitBtn = document.getElementById('resetBtn');
+
+            // Reset states
+            messageDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const { error } = await TMS_Auth.resetPassword(email);
+
+            if (error) {
+                errorDiv.textContent = error.message || 'Failed to send reset email.';
+                errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Reset Link';
+                return;
+            }
+
+            messageDiv.textContent = 'Check your email for a password reset link.';
+            messageDiv.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Reset Link';
+        });
+    </script>
+</body>
+</html>

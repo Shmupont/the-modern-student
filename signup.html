@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account — The Modern Student</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="auth-page">
+        <div class="auth-container">
+            <!-- Sign Up Form -->
+            <div id="signupCard" class="auth-card">
+                <div class="auth-header">
+                    <h1>Create your account</h1>
+                    <p>Get started with The Modern Student</p>
+                </div>
+
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                        <span class="form-hint">Use the same email you used for your purchase</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required autocomplete="new-password" placeholder="Create a password" minlength="8">
+                        <span class="form-hint">At least 8 characters</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="new-password" placeholder="Confirm your password">
+                    </div>
+
+                    <div id="errorMessage" class="auth-error" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" style="width: 100%;">
+                        Create Account
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <span>Already have an account?</span>
+                    <a href="login.html" class="auth-link">Sign in</a>
+                </div>
+            </div>
+
+            <!-- Email Confirmation Message -->
+            <div id="confirmationCard" class="auth-card" style="display: none;">
+                <div class="auth-header">
+                    <div class="auth-icon success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h1>Check your email</h1>
+                    <p id="confirmationEmail">We sent a confirmation link to your email</p>
+                </div>
+
+                <div class="auth-content">
+                    <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 24px;">
+                        Click the link in the email to verify your account and access the portal.
+                    </p>
+
+                    <a href="login.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Go to Login
+                    </a>
+                </div>
+
+                <div class="auth-footer">
+                    <span>Didn't receive the email?</span>
+                    <a href="#" onclick="resendConfirmation(); return false;" class="auth-link">Resend</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/main.js"></script>
+    <script src="assets/supabase.js"></script>
+    <script>
+        // Pre-fill email from URL param (from success page flow)
+        const urlParams = new URLSearchParams(window.location.search);
+        const emailParam = urlParams.get('email');
+        if (emailParam) {
+            document.getElementById('email').value = emailParam;
+        }
+
+        // Check if already logged in
+        async function checkExistingSession() {
+            const session = await TMS_Auth.getSession();
+            if (session) {
+                window.location.href = 'portal/index.html';
+            }
+        }
+        checkExistingSession();
+
+        let signupEmail = '';
+
+        // Signup form handler
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorDiv = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Reset error state
+            errorDiv.style.display = 'none';
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                errorDiv.textContent = 'Passwords do not match.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            // Validate password length
+            if (password.length < 8) {
+                errorDiv.textContent = 'Password must be at least 8 characters.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating account...';
+
+            const { data, error } = await TMS_Auth.signUp(email, password);
+
+            if (error) {
+                errorDiv.textContent = error.message || 'Failed to create account. Please try again.';
+                errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create Account';
+                return;
+            }
+
+            // Store email for resend functionality
+            signupEmail = email;
+
+            // Show confirmation message
+            document.getElementById('signupCard').style.display = 'none';
+            document.getElementById('confirmationCard').style.display = 'block';
+            document.getElementById('confirmationEmail').textContent =
+                `We sent a confirmation link to ${email}`;
+        });
+
+        // Resend confirmation email
+        async function resendConfirmation() {
+            if (!signupEmail) {
+                window.location.reload();
+                return;
+            }
+
+            // Use Supabase to resend
+            const { error } = await TMS_Auth.client.auth.resend({
+                type: 'signup',
+                email: signupEmail
+            });
+
+            if (error) {
+                showToast('Failed to resend email', 'error');
+            } else {
+                showToast('Confirmation email resent!', 'success');
+            }
+        }
+    </script>
+</body>
+</html>

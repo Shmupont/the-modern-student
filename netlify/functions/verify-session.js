@@ -71,6 +71,9 @@ exports.handler = async (event) => {
             expiresAt = Date.now() + (100 * 365 * 24 * 60 * 60 * 1000); // 100 years
         }
 
+        // Get customer email for account creation
+        const customerEmail = session.customer_email || session.customer_details?.email;
+
         // Return access token data
         return {
             statusCode: 200,
@@ -80,6 +83,7 @@ exports.handler = async (event) => {
                 member_access: memberAccess,
                 expires_at: expiresAt,
                 customer_id: session.customer,
+                customer_email: customerEmail,
                 plan: plan
             })
         };

@@ -17,7 +17,14 @@ const PORTAL_STORAGE = {
 };
 
 // ============================================
-// ACCESS GUARD (Token-Based)
+// CACHED DATA
+// ============================================
+let cachedUserEmail = null;
+let cachedAccessType = null; // 'course' or 'member'
+let cachedProgress = null;
+
+// ============================================
+// ACCESS GUARD (Supabase-Based with Token Fallback)
 // ============================================
 const TOKEN_KEY = 'tms_access_token';
 
@@ -43,35 +50,83 @@ function clearAccessToken() {
     localStorage.removeItem(TOKEN_KEY);
 }
 
-function hasValidAccess() {
+// Synchronous fallback check for localStorage tokens
+function hasValidAccessSync() {
     const token = getAccessToken();
-    if (!token) return false;
-    return token.course_access || token.member_access;
+    if (token && (token.course_access || token.member_access)) {
+        return true;
+    }
+    // Legacy fallback
+    return localStorage.getItem('tms_access_granted') === 'true';
 }
 
-function hasCourseAccess() {
+// Async check using Supabase
+async function hasValidAccess() {
+    // Check Supabase session first
+    if (window.TMS_Auth) {
+        const hasAccess = await TMS_Auth.hasValidAccess();
+        if (hasAccess) return true;
+    }
+
+    // Fallback to localStorage token
+    return hasValidAccessSync();
+}
+
+async function hasCourseAccess() {
+    if (window.TMS_Auth) {
+        return await TMS_Auth.hasCourseAccess();
+    }
     const token = getAccessToken();
     return token?.course_access === true;
 }
 
-function hasMemberAccess() {
+async function hasMemberAccess() {
+    if (window.TMS_Auth) {
+        return await TMS_Auth.hasMemberAccess();
+    }
     const token = getAccessToken();
     return token?.member_access === true;
 }
 
-function checkPortalAccess() {
-    // Check new token-based access
-    if (hasValidAccess()) {
+async function checkPortalAccess() {
+    // Check Supabase session first
+    if (window.TMS_Auth) {
+        const session = await TMS_Auth.getSession();
+
+        if (session) {
+            // User is logged in, check entitlements
+            const entitlements = await TMS_Auth.getEntitlements();
+
+            if (entitlements && (entitlements.course_access || entitlements.member_access)) {
+                // Store user info for UI
+                cachedUserEmail = session.user.email;
+                cachedAccessType = entitlements.member_access ? 'member' : 'course';
+                updateAccountDropdown();
+                return true;
+            } else {
+                // Logged in but no entitlements
+                showLockedState();
+                return false;
+            }
+        } else {
+            // Not logged in - check legacy tokens first
+            if (hasValidAccessSync()) {
+                // Has legacy access - show upgrade prompt eventually
+                return true;
+            }
+
+            // No session, redirect to login
+            window.location.href = '../login.html?redirect=' + encodeURIComponent(window.location.pathname);
+            return false;
+        }
+    }
+
+    // Fallback: localStorage token check
+    if (hasValidAccessSync()) {
         return true;
     }
 
-    // Fallback: check legacy access (for existing users during transition)
-    const legacyAccess = localStorage.getItem('tms_access_granted') === 'true';
-    if (legacyAccess) {
-        return true;
-    }
-
-    // No valid access - redirect to pricing
+    // No valid access
     showLockedState();
     return false;
 }
@@ -121,42 +176,95 @@ function showLockedState() {
 }
 
 // ============================================
-// PROGRESS TRACKING
+// PROGRESS TRACKING (Supabase-backed with localStorage fallback)
 // ============================================
-function getProgress() {
+async function getProgress() {
+    // Use Supabase if available
+    if (window.TMS_Auth) {
+        const progress = await TMS_Auth.getProgress();
+        cachedProgress = progress;
+        return progress;
+    }
+
+    // Fallback to localStorage
+    const stored = localStorage.getItem(PORTAL_STORAGE.PROGRESS);
+    cachedProgress = stored ? JSON.parse(stored) : {};
+    return cachedProgress;
+}
+
+function getProgressSync() {
+    // Return cached progress or fetch from localStorage
+    if (cachedProgress) return cachedProgress;
     const stored = localStorage.getItem(PORTAL_STORAGE.PROGRESS);
     return stored ? JSON.parse(stored) : {};
 }
 
-function saveProgress(progress) {
+function saveProgressLocal(progress) {
     localStorage.setItem(PORTAL_STORAGE.PROGRESS, JSON.stringify(progress));
 }
 
-function markLessonComplete(lessonId) {
-    const progress = getProgress();
+async function markLessonComplete(lessonId) {
+    if (window.TMS_Auth) {
+        const success = await TMS_Auth.markLessonComplete(lessonId);
+        if (success) {
+            // Update cache
+            if (!cachedProgress) cachedProgress = {};
+            cachedProgress[lessonId] = { completed: true, completedAt: Date.now() };
+            updateProgressUI();
+            showToast('Lesson marked as complete!', 'success');
+            return true;
+        }
+    }
+
+    // Fallback to localStorage
+    const progress = getProgressSync();
     progress[lessonId] = {
         completed: true,
         completedAt: Date.now()
     };
-    saveProgress(progress);
+    saveProgressLocal(progress);
+    cachedProgress = progress;
     updateProgressUI();
     showToast('Lesson marked as complete!', 'success');
+    return true;
 }
 
-function markLessonIncomplete(lessonId) {
-    const progress = getProgress();
+async function markLessonIncomplete(lessonId) {
+    if (window.TMS_Auth) {
+        const success = await TMS_Auth.markLessonIncomplete(lessonId);
+        if (success) {
+            // Update cache
+            if (cachedProgress) {
+                delete cachedProgress[lessonId];
+            }
+            updateProgressUI();
+            return true;
+        }
+    }
+
+    // Fallback to localStorage
+    const progress = getProgressSync();
     delete progress[lessonId];
-    saveProgress(progress);
+    saveProgressLocal(progress);
+    cachedProgress = progress;
     updateProgressUI();
+    return true;
 }
 
 function isLessonComplete(lessonId) {
-    const progress = getProgress();
+    const progress = getProgressSync();
     return progress[lessonId]?.completed || false;
 }
 
+async function isLessonCompleteAsync(lessonId) {
+    if (window.TMS_Auth) {
+        return await TMS_Auth.isLessonComplete(lessonId);
+    }
+    return isLessonComplete(lessonId);
+}
+
 function getCompletedCount() {
-    const progress = getProgress();
+    const progress = getProgressSync();
     return Object.keys(progress).length;
 }
 
@@ -587,15 +695,77 @@ async function copyToClipboard(text, btn) {
 // ============================================
 // LOGOUT
 // ============================================
-function logout() {
-    if (confirm('Are you sure you want to log out? Your progress is saved locally.')) {
-        // Clear new token-based access
+async function logout() {
+    if (confirm('Are you sure you want to log out?')) {
+        // Use Supabase signOut if available
+        if (window.TMS_Auth) {
+            await TMS_Auth.signOut();
+        }
+
+        // Clear token-based access
         clearAccessToken();
         // Clear legacy access keys
         localStorage.removeItem('tms_access_granted');
         localStorage.removeItem('tms_access_tier');
+
+        // Clear cached data
+        cachedUserEmail = null;
+        cachedAccessType = null;
+        cachedProgress = null;
+
         window.location.href = '../index.html';
     }
+}
+
+// ============================================
+// ACCOUNT DROPDOWN UI
+// ============================================
+function updateAccountDropdown() {
+    const dropdown = document.getElementById('accountDropdown');
+    if (!dropdown) return;
+
+    const emailEl = dropdown.querySelector('.account-email');
+    const avatarEl = dropdown.querySelector('.account-avatar');
+    const badgeEl = dropdown.querySelector('.account-badge');
+
+    if (cachedUserEmail && emailEl) {
+        emailEl.textContent = cachedUserEmail;
+        if (avatarEl) {
+            avatarEl.textContent = cachedUserEmail.charAt(0).toUpperCase();
+        }
+    }
+
+    if (cachedAccessType && badgeEl) {
+        badgeEl.textContent = cachedAccessType === 'member' ? 'Member' : 'Course';
+        badgeEl.className = 'account-badge ' + cachedAccessType;
+    }
+}
+
+function initAccountDropdown() {
+    const dropdown = document.getElementById('accountDropdown');
+    if (!dropdown) return;
+
+    const trigger = dropdown.querySelector('.account-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+        }
+    });
+
+    // Close on escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            dropdown.classList.remove('open');
+        }
+    });
 }
 
 // Make logout globally available
@@ -658,9 +828,13 @@ function initLessonPage() {
 // ============================================
 // INITIALIZATION
 // ============================================
-function initPortal() {
-    // Check access first
-    if (!checkPortalAccess()) return;
+async function initPortal() {
+    // Check access first (async)
+    const hasAccess = await checkPortalAccess();
+    if (!hasAccess) return;
+
+    // Load progress from Supabase
+    await getProgress();
 
     // Apply preferences
     applyPreferences();
@@ -671,6 +845,7 @@ function initPortal() {
     initFilters();
     initCopyButtons();
     initPreferenceToggles();
+    initAccountDropdown();
 
     // Update UI
     updateProgressUI();

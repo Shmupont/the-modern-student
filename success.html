@@ -37,7 +37,31 @@
                 <div class="success-details" id="successDetails">
                     <!-- Filled by JS -->
                 </div>
-                <a href="portal/index.html" class="btn btn-primary btn-lg">Go to Your Portal</a>
+                <a href="portal/index.html" class="btn btn-primary btn-lg" id="goToPortalBtn">Go to Your Portal</a>
+
+                <!-- Account Creation Prompt -->
+                <div id="createAccountPrompt" class="create-account-prompt" style="display: none;">
+                    <h3>Create Your Account</h3>
+                    <p>Set up your account to sync progress across devices and access your portal from anywhere.</p>
+                    <div class="create-account-benefits">
+                        <div class="create-account-benefit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            <span>Sync progress across all devices</span>
+                        </div>
+                        <div class="create-account-benefit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            <span>Never lose your completed lessons</span>
+                        </div>
+                        <div class="create-account-benefit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            <span>Access from any browser or device</span>
+                        </div>
+                    </div>
+                    <a href="#" id="createAccountBtn" class="btn btn-primary btn-lg" style="width: 100%;">Create Account</a>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--color-text-tertiary);">
+                        <a href="portal/index.html" style="color: var(--color-text-secondary);">Skip for now</a> — you can always create an account later
+                    </p>
+                </div>
             </div>
 
             <!-- Error State -->
@@ -279,6 +303,17 @@
                         : 'Your lifetime course access has been activated.';
 
                 showState(successState);
+
+                // Show account creation prompt after 2 seconds
+                setTimeout(() => {
+                    const prompt = document.getElementById('createAccountPrompt');
+                    const createBtn = document.getElementById('createAccountBtn');
+
+                    if (prompt && createBtn && data.customer_email) {
+                        prompt.style.display = 'block';
+                        createBtn.href = `signup.html?email=${encodeURIComponent(data.customer_email)}`;
+                    }
+                }, 2000);
 
             } catch (error) {
                 console.error('Verification error:', error);

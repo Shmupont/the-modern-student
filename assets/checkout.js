@@ -67,13 +67,33 @@ async function buyPlan(plan) {
         btn.innerHTML = '<span class="spinner"></span> Loading...';
     }
 
+    // Check if user is logged in - require account before purchase
+    if (window.TMS_Auth) {
+        const session = await TMS_Auth.getSession();
+        if (!session) {
+            // Not logged in - redirect to signup with plan info
+            window.location.href = `signup.html?plan=${plan}&redirect=pricing`;
+            return;
+        }
+    }
+
     try {
+        // Get user email to pre-fill Stripe checkout
+        let customerEmail = null;
+        if (window.TMS_Auth) {
+            const user = await TMS_Auth.getUser();
+            customerEmail = user?.email;
+        }
+
         const response = await fetch(`${API_BASE}/create-checkout-session`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ plan })
+            body: JSON.stringify({
+                plan,
+                customer_email: customerEmail
+            })
         });
 
         if (!response.ok) {

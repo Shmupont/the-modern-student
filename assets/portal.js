@@ -94,17 +94,21 @@ async function checkPortalAccess() {
         const session = await TMS_Auth.getSession();
 
         if (session) {
+            // Store user email immediately from session
+            cachedUserEmail = session.user.email;
+
             // User is logged in, check entitlements
             const entitlements = await TMS_Auth.getEntitlements();
 
             if (entitlements && (entitlements.course_access || entitlements.member_access)) {
-                // Store user info for UI
-                cachedUserEmail = session.user.email;
+                // Store access type for UI
                 cachedAccessType = entitlements.member_access ? 'member' : 'course';
                 updateAccountDropdown();
                 return true;
             } else {
-                // Logged in but no entitlements
+                // Logged in but no entitlements - still update dropdown with email
+                cachedAccessType = null;
+                updateAccountDropdown();
                 showLockedState();
                 return false;
             }
@@ -735,9 +739,15 @@ function updateAccountDropdown() {
         }
     }
 
-    if (cachedAccessType && badgeEl) {
-        badgeEl.textContent = cachedAccessType === 'member' ? 'Member' : 'Course';
-        badgeEl.className = 'account-badge ' + cachedAccessType;
+    if (badgeEl) {
+        if (cachedAccessType) {
+            badgeEl.textContent = cachedAccessType === 'member' ? 'Member' : 'Course';
+            badgeEl.className = 'account-badge ' + cachedAccessType;
+            badgeEl.style.display = '';
+        } else {
+            // No access - hide badge or show different state
+            badgeEl.style.display = 'none';
+        }
     }
 }
 

@@ -90,18 +90,34 @@
     <script src="assets/main.js"></script>
     <script src="assets/supabase.js"></script>
     <script>
-        // Pre-fill email from URL param (from success page flow)
+        // Get URL params
         const urlParams = new URLSearchParams(window.location.search);
         const emailParam = urlParams.get('email');
+        const planParam = urlParams.get('plan');
+        const redirectParam = urlParams.get('redirect');
+
+        // Pre-fill email from URL param (from success page flow)
         if (emailParam) {
             document.getElementById('email').value = emailParam;
+        }
+
+        // Show message if coming from purchase flow
+        if (planParam) {
+            const planName = planParam === 'membership' ? 'Membership' : 'Course';
+            document.querySelector('.auth-header p').textContent =
+                `Create an account to purchase the ${planName}`;
         }
 
         // Check if already logged in
         async function checkExistingSession() {
             const session = await TMS_Auth.getSession();
             if (session) {
-                window.location.href = 'portal/index.html';
+                // If there's a pending purchase, go to pricing to complete it
+                if (redirectParam === 'pricing' && planParam) {
+                    window.location.href = `pricing.html?plan=${planParam}`;
+                } else {
+                    window.location.href = 'portal/index.html';
+                }
             }
         }
         checkExistingSession();
@@ -151,7 +167,18 @@
             // Store email for resend functionality
             signupEmail = email;
 
-            // Show confirmation message
+            // Check if user is immediately signed in (email confirmation disabled)
+            if (data.session) {
+                // User is logged in, redirect appropriately
+                if (redirectParam === 'pricing' && planParam) {
+                    window.location.href = `pricing.html?plan=${planParam}`;
+                } else {
+                    window.location.href = 'portal/index.html';
+                }
+                return;
+            }
+
+            // Show confirmation message (email confirmation is enabled)
             document.getElementById('signupCard').style.display = 'none';
             document.getElementById('confirmationCard').style.display = 'block';
             document.getElementById('confirmationEmail').textContent =

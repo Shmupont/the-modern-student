@@ -20,7 +20,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        const { plan } = JSON.parse(event.body);
+        const { plan, customer_email } = JSON.parse(event.body);
 
         if (!plan || !['course', 'membership'].includes(plan)) {
             return {
@@ -63,6 +63,11 @@ exports.handler = async (event) => {
                     plan: 'membership'
                 }
             };
+        }
+
+        // Pre-fill customer email if provided (user is logged in)
+        if (customer_email) {
+            sessionConfig.customer_email = customer_email;
         }
 
         const session = await stripe.checkout.sessions.create(sessionConfig);

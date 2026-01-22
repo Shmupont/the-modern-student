@@ -6,6 +6,7 @@
     <meta name="description" content="Get lifetime course access or join our membership for ongoing support and new content.">
     <title>Pricing — The Modern Student</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -246,6 +247,20 @@
     </footer>
 
     <script src="assets/main.js"></script>
+    <script src="assets/supabase.js"></script>
     <script src="assets/checkout.js"></script>
+    <script>
+        // Auto-trigger purchase if redirected from signup with plan param
+        const urlParams = new URLSearchParams(window.location.search);
+        const planParam = urlParams.get('plan');
+        if (planParam && (planParam === 'course' || planParam === 'membership')) {
+            // Clear the URL param to prevent loops
+            window.history.replaceState({}, document.title, 'pricing.html');
+            // Trigger purchase after a short delay to ensure scripts are loaded
+            setTimeout(() => {
+                buyPlan(planParam);
+            }, 500);
+        }
+    </script>
 </body>
 </html>

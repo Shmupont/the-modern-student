@@ -6,8 +6,8 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Price IDs - set these in your Netlify environment variables
-const COURSE_PRICE_ID = process.env.STRIPE_COURSE_PRICE_ID;
-const MEMBERSHIP_PRICE_ID = process.env.STRIPE_MEMBERSHIP_PRICE_ID;
+const COURSE_PRICE_ID = process.env.PRICE_ID_PRODUCT_ONLY;
+const MEMBERSHIP_PRICE_ID = process.env.STRIPE_COURSE_MEMBERHSIP_PRICE_ID;
 
 exports.handler = async (event) => {
     // Only allow POST

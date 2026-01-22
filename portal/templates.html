@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates — The Modern Student Portal</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-right">
+            <span class="badge badge-success">Access Granted</span>
+            <button class="btn btn-ghost btn-sm" id="sidebarToggle" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="portal-layout">
+        <!-- Sidebar -->
+        <aside class="portal-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Learn</div>
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </a>
+                    <a href="lessons.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Lessons
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Resources</div>
+                <nav class="sidebar-nav">
+                    <a href="workflows.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Workflows
+                    </a>
+                    <a href="templates.html" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Templates
+                    </a>
+                    <a href="resources.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Resources
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Account</div>
+                <nav class="sidebar-nav">
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Settings
+                    </a>
+                    <button class="sidebar-link" onclick="logout()" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Log Out
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="portal-main">
+            <!-- Header -->
+            <div style="margin-bottom: 24px;">
+                <h2 style="margin-bottom: 4px;">Templates</h2>
+                <p class="text-secondary" style="font-size: 14px;">Copy, customize, and use for your assignments</p>
+            </div>
+
+            <!-- Templates Grid -->
+            <div class="templates-grid">
+                <!-- Essay Outline Template -->
+                <div class="template-card">
+                    <div class="template-icon">📝</div>
+                    <div class="template-content">
+                        <h4>Essay Outline</h4>
+                        <p>Structured outline for argumentative essays</p>
+                        <div class="template-tags">
+                            <span class="tag">Writing</span>
+                            <span class="tag">Essays</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('essay-outline')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+
+                <!-- Research Paper Template -->
+                <div class="template-card">
+                    <div class="template-icon">🔬</div>
+                    <div class="template-content">
+                        <h4>Research Paper Structure</h4>
+                        <p>Complete research paper framework</p>
+                        <div class="template-tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Academic</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('research-paper')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+
+                <!-- Study Guide Template -->
+                <div class="template-card">
+                    <div class="template-icon">📚</div>
+                    <div class="template-content">
+                        <h4>Study Guide Creator</h4>
+                        <p>Organize notes into study guides</p>
+                        <div class="template-tags">
+                            <span class="tag">Study</span>
+                            <span class="tag">Notes</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('study-guide')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+
+                <!-- Weekly Planner Template -->
+                <div class="template-card">
+                    <div class="template-icon">📅</div>
+                    <div class="template-content">
+                        <h4>Weekly Planner</h4>
+                        <p>Plan your week with time blocks</p>
+                        <div class="template-tags">
+                            <span class="tag">Productivity</span>
+                            <span class="tag">Planning</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('weekly-planner')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+
+                <!-- Literature Review Template -->
+                <div class="template-card">
+                    <div class="template-icon">📖</div>
+                    <div class="template-content">
+                        <h4>Literature Review Matrix</h4>
+                        <p>Track and compare sources</p>
+                        <div class="template-tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Sources</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('lit-review')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+
+                <!-- Project Breakdown Template -->
+                <div class="template-card">
+                    <div class="template-icon">🎯</div>
+                    <div class="template-content">
+                        <h4>Project Breakdown</h4>
+                        <p>Break big projects into tasks</p>
+                        <div class="template-tags">
+                            <span class="tag">Productivity</span>
+                            <span class="tag">Projects</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('project-breakdown')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+
+                <!-- Email Templates -->
+                <div class="template-card">
+                    <div class="template-icon">✉️</div>
+                    <div class="template-content">
+                        <h4>Email Templates</h4>
+                        <p>Professional academic emails</p>
+                        <div class="template-tags">
+                            <span class="tag">Communication</span>
+                            <span class="tag">Professional</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('email-templates')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+
+                <!-- Exam Prep Checklist -->
+                <div class="template-card">
+                    <div class="template-icon">✅</div>
+                    <div class="template-content">
+                        <h4>Exam Prep Checklist</h4>
+                        <p>Comprehensive exam preparation</p>
+                        <div class="template-tags">
+                            <span class="tag">Exams</span>
+                            <span class="tag">Checklist</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="openTemplate('exam-prep')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        View
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Template Modal -->
+    <div id="templateModal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal template-modal">
+            <button class="modal-close" onclick="closeTemplate()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="templateModalIcon">📝</div>
+                <h2 class="modal-title" id="templateModalTitle">Template</h2>
+            </div>
+            <div class="modal-body">
+                <div class="template-preview" id="templatePreview">
+                    <!-- Template content loads here -->
+                </div>
+                <div class="template-actions">
+                    <button class="btn btn-primary" onclick="copyTemplate()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Template
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <style>
+        @media (max-width: 1024px) {
+            #sidebarToggle { display: block !important; }
+        }
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        .template-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        .template-card:hover {
+            border-color: var(--color-border-default);
+            background: var(--color-glass-light);
+        }
+        .template-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-glass-elevated);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .template-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .template-content h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .template-content p {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            margin-bottom: 8px;
+        }
+        .template-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            background: rgba(167, 139, 250, 0.12);
+            color: var(--color-accent-purple);
+            border-radius: 4px;
+        }
+        .template-modal {
+            max-width: 700px;
+            max-height: 80vh;
+        }
+        .template-preview {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 12px;
+            padding: 24px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            color: var(--color-text-secondary);
+        }
+        .template-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .template-actions .btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+
+    <script src="../assets/main.js"></script>
+    <script src="../assets/portal.js"></script>
+    <script>
+        const templates = {
+            'essay-outline': {
+                icon: '📝',
+                title: 'Essay Outline Template',
+                content: `ESSAY OUTLINE TEMPLATE
+═══════════════════════════════════════
+
+TITLE: [Your Essay Title]
+THESIS: [One sentence that states your main argument]
+
+───────────────────────────────────────
+I. INTRODUCTION
+───────────────────────────────────────
+   Hook: [Attention-grabbing opening]
+
+   Context: [Background information needed]
+
+   Thesis Statement: [Your main argument]
+
+───────────────────────────────────────
+II. BODY PARAGRAPH 1
+───────────────────────────────────────
+   Topic Sentence: [Main point of this paragraph]
+
+   Evidence 1: [Quote, data, or example]
+   - Analysis: [What does this evidence show?]
+
+   Evidence 2: [Quote, data, or example]
+   - Analysis: [What does this evidence show?]
+
+   Transition: [Connect to next paragraph]
+
+───────────────────────────────────────
+III. BODY PARAGRAPH 2
+───────────────────────────────────────
+   Topic Sentence: [Main point of this paragraph]
+
+   Evidence 1: [Quote, data, or example]
+   - Analysis: [What does this evidence show?]
+
+   Evidence 2: [Quote, data, or example]
+   - Analysis: [What does this evidence show?]
+
+   Transition: [Connect to next paragraph]
+
+───────────────────────────────────────
+IV. BODY PARAGRAPH 3
+───────────────────────────────────────
+   Topic Sentence: [Main point of this paragraph]
+
+   Evidence 1: [Quote, data, or example]
+   - Analysis: [What does this evidence show?]
+
+   Counterargument: [Opposing view]
+   - Rebuttal: [Why your argument is stronger]
+
+   Transition: [Connect to conclusion]
+
+───────────────────────────────────────
+V. CONCLUSION
+───────────────────────────────────────
+   Restate Thesis: [Rephrase your argument]
+
+   Summary: [Key points from body paragraphs]
+
+   Final Thought: [Broader implications or call to action]
+
+═══════════════════════════════════════`
+            },
+            'research-paper': {
+                icon: '🔬',
+                title: 'Research Paper Structure',
+                content: `RESEARCH PAPER TEMPLATE
+═══════════════════════════════════════
+
+TITLE: [Clear, Descriptive Title]
+AUTHOR: [Your Name]
+DATE: [Date]
+COURSE: [Course Name]
+
+───────────────────────────────────────
+ABSTRACT (150-300 words)
+───────────────────────────────────────
+[Brief summary of:
+- Research question
+- Methodology
+- Key findings
+- Conclusions]
+
+───────────────────────────────────────
+I. INTRODUCTION
+───────────────────────────────────────
+Background:
+[Context and importance of topic]
+
+Problem Statement:
+[What gap or issue are you addressing?]
+
+Research Question:
+[Your specific question]
+
+Thesis/Hypothesis:
+[Your argument or expected findings]
+
+Scope:
+[What you will and won't cover]
+
+───────────────────────────────────────
+II. LITERATURE REVIEW
+───────────────────────────────────────
+Theme 1: [Key theme from existing research]
+- Source 1: [Author, Year - Key finding]
+- Source 2: [Author, Year - Key finding]
+- Gap identified: [What's missing?]
+
+Theme 2: [Key theme from existing research]
+- Source 1: [Author, Year - Key finding]
+- Source 2: [Author, Year - Key finding]
+- Gap identified: [What's missing?]
+
+Synthesis:
+[How does your research fit in?]
+
+───────────────────────────────────────
+III. METHODOLOGY
+───────────────────────────────────────
+Approach: [Qualitative/Quantitative/Mixed]
+
+Data Collection:
+[How you gathered information]
+
+Analysis Method:
+[How you analyzed the data]
+
+Limitations:
+[Constraints of your method]
+
+───────────────────────────────────────
+IV. FINDINGS/RESULTS
+───────────────────────────────────────
+Finding 1: [Key result with evidence]
+
+Finding 2: [Key result with evidence]
+
+Finding 3: [Key result with evidence]
+
+───────────────────────────────────────
+V. DISCUSSION
+───────────────────────────────────────
+Interpretation:
+[What do the findings mean?]
+
+Connection to Literature:
+[How do findings relate to existing research?]
+
+Implications:
+[Why does this matter?]
+
+Limitations:
+[What couldn't you address?]
+
+───────────────────────────────────────
+VI. CONCLUSION
+───────────────────────────────────────
+Summary:
+[Recap key points]
+
+Contribution:
+[What did you add to the field?]
+
+Future Research:
+[What should be studied next?]
+
+───────────────────────────────────────
+REFERENCES
+───────────────────────────────────────
+[Use your required citation format]
+
+═══════════════════════════════════════`
+            },
+            'study-guide': {
+                icon: '📚',
+                title: 'Study Guide Creator',
+                content: `STUDY GUIDE TEMPLATE
+═══════════════════════════════════════
+
+COURSE: [Course Name]
+EXAM DATE: [Date]
+TOPICS COVERED: [Chapters/Units]
+
+───────────────────────────────────────
+TOPIC 1: [Topic Name]
+───────────────────────────────────────
+
+Key Concepts:
+□ [Concept 1]: [Brief definition]
+□ [Concept 2]: [Brief definition]
+□ [Concept 3]: [Brief definition]
+
+Important Terms:
+• [Term]: [Definition]
+• [Term]: [Definition]
+• [Term]: [Definition]
+
+Key Formulas/Rules:
+• [Formula/Rule 1]
+• [Formula/Rule 2]
+
+Example Problems:
+1. [Sample question]
+   Answer: [Answer with explanation]
+
+2. [Sample question]
+   Answer: [Answer with explanation]
+
+Common Mistakes to Avoid:
+⚠ [Mistake 1]
+⚠ [Mistake 2]
+
+───────────────────────────────────────
+TOPIC 2: [Topic Name]
+───────────────────────────────────────
+
+Key Concepts:
+□ [Concept 1]: [Brief definition]
+□ [Concept 2]: [Brief definition]
+□ [Concept 3]: [Brief definition]
+
+Important Terms:
+• [Term]: [Definition]
+• [Term]: [Definition]
+
+Connections to Other Topics:
+→ Links to [Topic 1] because...
+→ Relates to [Topic 3] through...
+
+───────────────────────────────────────
+QUICK REVIEW CHECKLIST
+───────────────────────────────────────
+□ Can I explain [Concept] in my own words?
+□ Can I solve problems involving [Topic]?
+□ Do I understand how [A] relates to [B]?
+□ Can I identify [Key patterns/types]?
+□ Do I know the exceptions/edge cases?
+
+───────────────────────────────────────
+MEMORY AIDS
+───────────────────────────────────────
+Mnemonic 1: [Memory trick]
+Mnemonic 2: [Memory trick]
+
+───────────────────────────────────────
+QUESTIONS TO ASK PROFESSOR
+───────────────────────────────────────
+1. [Unclear concept or question]
+2. [Unclear concept or question]
+
+═══════════════════════════════════════`
+            },
+            'weekly-planner': {
+                icon: '📅',
+                title: 'Weekly Planner Template',
+                content: `WEEKLY PLANNER
+═══════════════════════════════════════
+
+WEEK OF: [Date Range]
+PRIORITY FOCUS: [Main goal this week]
+
+───────────────────────────────────────
+DEADLINES THIS WEEK
+───────────────────────────────────────
+□ [Assignment] - Due: [Day, Time]
+□ [Assignment] - Due: [Day, Time]
+□ [Assignment] - Due: [Day, Time]
+
+───────────────────────────────────────
+MONDAY
+───────────────────────────────────────
+Classes: [List with times]
+
+Study Blocks:
+[ ] ___:___ - ___:___ | [Subject/Task]
+[ ] ___:___ - ___:___ | [Subject/Task]
+
+To-Do:
+□
+□
+□
+
+───────────────────────────────────────
+TUESDAY
+───────────────────────────────────────
+Classes: [List with times]
+
+Study Blocks:
+[ ] ___:___ - ___:___ | [Subject/Task]
+[ ] ___:___ - ___:___ | [Subject/Task]
+
+To-Do:
+□
+□
+□
+
+───────────────────────────────────────
+WEDNESDAY
+───────────────────────────────────────
+Classes: [List with times]
+
+Study Blocks:
+[ ] ___:___ - ___:___ | [Subject/Task]
+[ ] ___:___ - ___:___ | [Subject/Task]
+
+To-Do:
+□
+□
+□
+
+───────────────────────────────────────
+THURSDAY
+───────────────────────────────────────
+Classes: [List with times]
+
+Study Blocks:
+[ ] ___:___ - ___:___ | [Subject/Task]
+[ ] ___:___ - ___:___ | [Subject/Task]
+
+To-Do:
+□
+□
+□
+
+───────────────────────────────────────
+FRIDAY
+───────────────────────────────────────
+Classes: [List with times]
+
+Study Blocks:
+[ ] ___:___ - ___:___ | [Subject/Task]
+[ ] ___:___ - ___:___ | [Subject/Task]
+
+To-Do:
+□
+□
+□
+
+───────────────────────────────────────
+WEEKEND
+───────────────────────────────────────
+Saturday:
+□
+□
+
+Sunday:
+□
+□
+
+───────────────────────────────────────
+WEEKLY REFLECTION
+───────────────────────────────────────
+What worked well?
+
+What needs improvement?
+
+Next week's focus:
+
+═══════════════════════════════════════`
+            },
+            'lit-review': {
+                icon: '📖',
+                title: 'Literature Review Matrix',
+                content: `LITERATURE REVIEW MATRIX
+═══════════════════════════════════════
+
+RESEARCH TOPIC: [Your Topic]
+RESEARCH QUESTION: [Your Question]
+
+───────────────────────────────────────
+SOURCE 1
+───────────────────────────────────────
+Citation: [Full citation]
+Author(s): [Names]
+Year: [Year]
+Type: [Journal Article/Book/Report]
+
+Purpose/Research Question:
+[What did they study?]
+
+Methodology:
+[How did they study it?]
+
+Key Findings:
+• [Finding 1]
+• [Finding 2]
+• [Finding 3]
+
+Strengths:
++ [Strength]
++ [Strength]
+
+Limitations:
+- [Limitation]
+- [Limitation]
+
+Relevance to My Research:
+[How does this connect?]
+
+Key Quotes:
+"[Quote]" (p. XX)
+
+───────────────────────────────────────
+SOURCE 2
+───────────────────────────────────────
+Citation: [Full citation]
+Author(s): [Names]
+Year: [Year]
+Type: [Journal Article/Book/Report]
+
+Purpose/Research Question:
+[What did they study?]
+
+Methodology:
+[How did they study it?]
+
+Key Findings:
+• [Finding 1]
+• [Finding 2]
+• [Finding 3]
+
+Strengths:
++ [Strength]
++ [Strength]
+
+Limitations:
+- [Limitation]
+- [Limitation]
+
+Relevance to My Research:
+[How does this connect?]
+
+Key Quotes:
+"[Quote]" (p. XX)
+
+───────────────────────────────────────
+THEMES ACROSS SOURCES
+───────────────────────────────────────
+Theme 1: [Theme]
+- Supported by: [Sources]
+- Key insight: [Summary]
+
+Theme 2: [Theme]
+- Supported by: [Sources]
+- Key insight: [Summary]
+
+───────────────────────────────────────
+GAPS IN LITERATURE
+───────────────────────────────────────
+Gap 1: [What's missing?]
+Gap 2: [What's missing?]
+
+How my research addresses these gaps:
+[Your contribution]
+
+═══════════════════════════════════════`
+            },
+            'project-breakdown': {
+                icon: '🎯',
+                title: 'Project Breakdown Template',
+                content: `PROJECT BREAKDOWN
+═══════════════════════════════════════
+
+PROJECT: [Project Name]
+DUE DATE: [Final Deadline]
+TOTAL TIME ESTIMATE: [Hours]
+
+───────────────────────────────────────
+PHASE 1: PLANNING
+───────────────────────────────────────
+Deadline: [Date]
+Time: [X hours]
+
+Tasks:
+□ Understand requirements
+□ Gather materials/resources
+□ Create timeline
+□ [Additional task]
+
+Deliverable: [What you'll have done]
+
+───────────────────────────────────────
+PHASE 2: RESEARCH/GATHERING
+───────────────────────────────────────
+Deadline: [Date]
+Time: [X hours]
+
+Tasks:
+□ [Research task 1]
+□ [Research task 2]
+□ [Gather materials]
+□ [Additional task]
+
+Deliverable: [What you'll have done]
+
+───────────────────────────────────────
+PHASE 3: FIRST DRAFT/BUILD
+───────────────────────────────────────
+Deadline: [Date]
+Time: [X hours]
+
+Tasks:
+□ [Creation task 1]
+□ [Creation task 2]
+□ [Creation task 3]
+□ [Additional task]
+
+Deliverable: [What you'll have done]
+
+───────────────────────────────────────
+PHASE 4: REVISION
+───────────────────────────────────────
+Deadline: [Date]
+Time: [X hours]
+
+Tasks:
+□ Review first draft
+□ Get feedback
+□ Make revisions
+□ [Additional task]
+
+Deliverable: [What you'll have done]
+
+───────────────────────────────────────
+PHASE 5: FINAL POLISH
+───────────────────────────────────────
+Deadline: [Date]
+Time: [X hours]
+
+Tasks:
+□ Final edits
+□ Formatting
+□ Proofread
+□ Submit
+
+Deliverable: [Final submission]
+
+───────────────────────────────────────
+DAILY BREAKDOWN
+───────────────────────────────────────
+[Date]: [Specific tasks]
+[Date]: [Specific tasks]
+[Date]: [Specific tasks]
+[Date]: [Specific tasks]
+[Date]: Buffer day
+
+───────────────────────────────────────
+RESOURCES NEEDED
+───────────────────────────────────────
+□ [Resource 1]
+□ [Resource 2]
+□ [Resource 3]
+
+───────────────────────────────────────
+POTENTIAL BLOCKERS
+───────────────────────────────────────
+⚠ [Risk 1] → Backup plan: [Solution]
+⚠ [Risk 2] → Backup plan: [Solution]
+
+═══════════════════════════════════════`
+            },
+            'email-templates': {
+                icon: '✉️',
+                title: 'Email Templates',
+                content: `EMAIL TEMPLATES
+═══════════════════════════════════════
+
+───────────────────────────────────────
+1. REQUESTING AN EXTENSION
+───────────────────────────────────────
+Subject: Extension Request - [Assignment Name]
+
+Dear Professor [Name],
+
+I hope this email finds you well. I am writing to request a brief extension on [assignment name], which is currently due on [date].
+
+[Brief, honest explanation - e.g., "I have been dealing with [situation] that has affected my ability to complete the assignment on time."]
+
+I have already completed [X portion] of the assignment and am confident I can submit quality work by [proposed new date].
+
+I understand if an extension is not possible, but I wanted to reach out and explain my situation. Please let me know if you would like to discuss this further.
+
+Thank you for your understanding.
+
+Best regards,
+[Your Name]
+[Course Name, Section]
+
+───────────────────────────────────────
+2. ASKING FOR CLARIFICATION
+───────────────────────────────────────
+Subject: Question About [Assignment/Concept]
+
+Dear Professor [Name],
+
+I am working on [assignment] and wanted to clarify [specific question].
+
+My understanding is that [your interpretation]. Could you confirm if this is correct, or let me know if I should approach it differently?
+
+Thank you for your time.
+
+Best regards,
+[Your Name]
+[Course Name, Section]
+
+───────────────────────────────────────
+3. REQUESTING OFFICE HOURS
+───────────────────────────────────────
+Subject: Office Hours Appointment Request
+
+Dear Professor [Name],
+
+I would like to schedule an appointment during your office hours to discuss [topic - be specific].
+
+I am available [list 2-3 time options]. Please let me know what works best for you.
+
+Thank you,
+[Your Name]
+[Course Name, Section]
+
+───────────────────────────────────────
+4. FOLLOWING UP ON GRADE
+───────────────────────────────────────
+Subject: Question About [Assignment] Grade
+
+Dear Professor [Name],
+
+I hope you're doing well. I recently received my grade for [assignment] and was hoping to better understand the feedback.
+
+Specifically, I would like clarification on [specific feedback point]. I want to make sure I understand so I can improve on future assignments.
+
+Would it be possible to meet briefly during office hours to discuss this?
+
+Thank you for your time.
+
+Best regards,
+[Your Name]
+[Course Name, Section]
+
+───────────────────────────────────────
+5. LETTER OF RECOMMENDATION REQUEST
+───────────────────────────────────────
+Subject: Letter of Recommendation Request
+
+Dear Professor [Name],
+
+I hope this email finds you well. I am applying to [program/opportunity] and am writing to ask if you would be willing to write a letter of recommendation on my behalf.
+
+I took [course(s)] with you during [semester/year], where I [mention relevant experience, project, or achievement]. I believe you could speak to my [relevant qualities].
+
+The deadline for submission is [date]. I would be happy to provide my resume, transcript, or any other materials that would be helpful.
+
+Please let me know if you need any additional information. I completely understand if you are unable to write the letter due to other commitments.
+
+Thank you for considering my request.
+
+Best regards,
+[Your Name]
+
+═══════════════════════════════════════`
+            },
+            'exam-prep': {
+                icon: '✅',
+                title: 'Exam Prep Checklist',
+                content: `EXAM PREPARATION CHECKLIST
+═══════════════════════════════════════
+
+EXAM: [Course/Subject]
+DATE: [Exam Date]
+TIME: [Exam Time]
+LOCATION: [Room]
+FORMAT: [Multiple choice/Essay/Mixed]
+
+───────────────────────────────────────
+2 WEEKS BEFORE
+───────────────────────────────────────
+□ Review syllabus for exam topics
+□ Gather all notes and materials
+□ Identify gaps in understanding
+□ Create study schedule
+□ Form study group (optional)
+□ Visit professor's office hours with questions
+
+───────────────────────────────────────
+1 WEEK BEFORE
+───────────────────────────────────────
+□ Complete first pass through all material
+□ Create summary sheets/flashcards
+□ Do practice problems
+□ Review past exams (if available)
+□ Clarify remaining questions
+□ Test yourself on key concepts
+
+───────────────────────────────────────
+3 DAYS BEFORE
+───────────────────────────────────────
+□ Focus on weak areas
+□ Review summary sheets
+□ Do timed practice
+□ Get materials ready (calculator, pens, etc.)
+□ Plan exam day logistics
+
+───────────────────────────────────────
+DAY BEFORE
+───────────────────────────────────────
+□ Light review only - no cramming
+□ Review summary sheets once
+□ Prepare everything you need
+□ Set multiple alarms
+□ Get good sleep (7-8 hours)
+□ Eat a proper dinner
+
+───────────────────────────────────────
+EXAM DAY
+───────────────────────────────────────
+□ Eat a good breakfast
+□ Arrive 15 minutes early
+□ Bring: [List required materials]
+□ Quick review of key formulas/concepts
+□ Stay calm - you've prepared!
+
+───────────────────────────────────────
+DURING THE EXAM
+───────────────────────────────────────
+□ Read all instructions carefully
+□ Skim entire exam first
+□ Answer easy questions first
+□ Manage time (check clock)
+□ Show your work
+□ Review answers if time permits
+
+───────────────────────────────────────
+KEY TOPICS TO REVIEW
+───────────────────────────────────────
+□ [Topic 1] - Confidence: ⭐⭐⭐
+□ [Topic 2] - Confidence: ⭐⭐
+□ [Topic 3] - Confidence: ⭐⭐⭐
+□ [Topic 4] - Confidence: ⭐
+□ [Topic 5] - Confidence: ⭐⭐
+
+───────────────────────────────────────
+FORMULAS/KEY FACTS TO MEMORIZE
+───────────────────────────────────────
+1.
+2.
+3.
+4.
+5.
+
+───────────────────────────────────────
+POTENTIAL EXAM QUESTIONS
+───────────────────────────────────────
+1. [Predicted question]
+2. [Predicted question]
+3. [Predicted question]
+
+═══════════════════════════════════════`
+            }
+        };
+
+        let currentTemplate = null;
+
+        function openTemplate(id) {
+            currentTemplate = templates[id];
+            if (!currentTemplate) return;
+
+            document.getElementById('templateModalIcon').textContent = currentTemplate.icon;
+            document.getElementById('templateModalTitle').textContent = currentTemplate.title;
+            document.getElementById('templatePreview').textContent = currentTemplate.content;
+            document.getElementById('templateModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTemplate() {
+            document.getElementById('templateModal').classList.remove('active');
+            document.body.style.overflow = '';
+            currentTemplate = null;
+        }
+
+        function copyTemplate() {
+            if (!currentTemplate) return;
+
+            navigator.clipboard.writeText(currentTemplate.content).then(() => {
+                showToast('Template copied to clipboard!', 'success');
+                closeTemplate();
+            });
+        }
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeTemplate();
+        });
+
+        // Close modal on overlay click
+        document.getElementById('templateModal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) closeTemplate();
+        });
+    </script>
+</body>
+</html>

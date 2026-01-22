@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources — The Modern Student Portal</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-right">
+            <span class="badge badge-success">Access Granted</span>
+            <button class="btn btn-ghost btn-sm" id="sidebarToggle" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="portal-layout">
+        <!-- Sidebar -->
+        <aside class="portal-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Learn</div>
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </a>
+                    <a href="lessons.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Lessons
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Resources</div>
+                <nav class="sidebar-nav">
+                    <a href="workflows.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Workflows
+                    </a>
+                    <a href="templates.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Templates
+                    </a>
+                    <a href="resources.html" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Resources
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Account</div>
+                <nav class="sidebar-nav">
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Settings
+                    </a>
+                    <button class="sidebar-link" onclick="logout()" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Log Out
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="portal-main">
+            <!-- Header -->
+            <div style="margin-bottom: 32px;">
+                <h2 style="margin-bottom: 4px;">Resources</h2>
+                <p class="text-secondary" style="font-size: 14px;">Tools, cheat sheets, and quick references</p>
+            </div>
+
+            <!-- Quick Start Checklist -->
+            <section class="resource-section">
+                <h3 class="section-title-sm">Quick Start Checklist</h3>
+                <div class="card" style="padding: 24px;">
+                    <p class="text-secondary" style="margin-bottom: 20px; font-size: 14px;">Complete these steps to get set up for success.</p>
+                    <div class="checklist-grid">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="check1">
+                            <span class="checkmark"></span>
+                            <span>Create accounts on ChatGPT and Claude</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="check2">
+                            <span class="checkmark"></span>
+                            <span>Complete Lesson 1.1: How AI Actually Works</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="check3">
+                            <span class="checkmark"></span>
+                            <span>Review the Ethics Framework (Lesson 1.2)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="check4">
+                            <span class="checkmark"></span>
+                            <span>Try your first workflow prompt</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="check5">
+                            <span class="checkmark"></span>
+                            <span>Download the Prompting Cheat Sheet</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="check6">
+                            <span class="checkmark"></span>
+                            <span>Apply AI to a real assignment</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prompting Cheat Sheet -->
+            <section class="resource-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3 class="section-title-sm" style="margin: 0;">Prompting Cheat Sheet</h3>
+                    <button class="btn btn-ghost btn-sm" onclick="copyCheatSheet()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy All
+                    </button>
+                </div>
+                <div class="cheat-sheet" id="cheatSheet">
+                    <div class="cheat-section">
+                        <h4>The CLEAR Framework</h4>
+                        <ul>
+                            <li><strong>C</strong>ontext — Who you are, what you're working on</li>
+                            <li><strong>L</strong>ength — How long/detailed should the response be</li>
+                            <li><strong>E</strong>xpectations — What format, tone, or style you want</li>
+                            <li><strong>A</strong>sk — Your specific question or request</li>
+                            <li><strong>R</strong>estrictions — What to avoid or constraints to follow</li>
+                        </ul>
+                    </div>
+
+                    <div class="cheat-section">
+                        <h4>Power Phrases</h4>
+                        <div class="power-phrases">
+                            <div class="phrase">
+                                <code>"Act as a..."</code>
+                                <span>Set the AI's perspective (tutor, editor, study partner)</span>
+                            </div>
+                            <div class="phrase">
+                                <code>"Explain like I'm..."</code>
+                                <span>Control complexity level</span>
+                            </div>
+                            <div class="phrase">
+                                <code>"Give me X options..."</code>
+                                <span>Get multiple alternatives to choose from</span>
+                            </div>
+                            <div class="phrase">
+                                <code>"What questions should I ask about..."</code>
+                                <span>Generate critical thinking prompts</span>
+                            </div>
+                            <div class="phrase">
+                                <code>"What am I missing..."</code>
+                                <span>Identify blind spots in your thinking</span>
+                            </div>
+                            <div class="phrase">
+                                <code>"Steelman the opposite view..."</code>
+                                <span>Get the strongest counterargument</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cheat-section">
+                        <h4>Common Mistakes to Avoid</h4>
+                        <div class="mistakes-grid">
+                            <div class="mistake">
+                                <span class="mistake-bad">❌ "Write my essay about climate change"</span>
+                                <span class="mistake-good">✓ "Help me brainstorm 5 thesis angles for an essay about climate policy"</span>
+                            </div>
+                            <div class="mistake">
+                                <span class="mistake-bad">❌ "Explain photosynthesis"</span>
+                                <span class="mistake-good">✓ "Explain photosynthesis in 3 bullet points for a biology 101 student"</span>
+                            </div>
+                            <div class="mistake">
+                                <span class="mistake-bad">❌ Accepting first response as final</span>
+                                <span class="mistake-good">✓ Follow up: "Can you elaborate on point 2?" or "Make this more concise"</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cheat-section">
+                        <h4>Quick Reference: Best Uses</h4>
+                        <div class="use-cases">
+                            <div class="use-case good">
+                                <span class="use-icon">✓</span>
+                                <div>
+                                    <strong>Great for:</strong>
+                                    <p>Brainstorming, explaining concepts, outlining, feedback on YOUR writing, practice questions, study guides</p>
+                                </div>
+                            </div>
+                            <div class="use-case caution">
+                                <span class="use-icon">⚠️</span>
+                                <div>
+                                    <strong>Use carefully:</strong>
+                                    <p>Fact-checking (verify independently), citations (always verify sources exist), specialized knowledge</p>
+                                </div>
+                            </div>
+                            <div class="use-case bad">
+                                <span class="use-icon">✗</span>
+                                <div>
+                                    <strong>Avoid:</strong>
+                                    <p>Having AI write your assignments, copying outputs without understanding, using for exams unless allowed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Tools -->
+            <section class="resource-section">
+                <h3 class="section-title-sm">Recommended AI Tools</h3>
+                <div class="tools-grid">
+                    <!-- General Purpose -->
+                    <div class="tool-category">
+                        <h4>General Purpose AI</h4>
+                        <div class="tools-list">
+                            <div class="tool-item">
+                                <div class="tool-icon">🤖</div>
+                                <div class="tool-info">
+                                    <strong>ChatGPT</strong>
+                                    <p>Best for: General tasks, coding, creative work</p>
+                                    <span class="tool-price">Free / $20/mo</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">🧠</div>
+                                <div class="tool-info">
+                                    <strong>Claude</strong>
+                                    <p>Best for: Long documents, nuanced analysis, writing feedback</p>
+                                    <span class="tool-price">Free / $20/mo</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">💎</div>
+                                <div class="tool-info">
+                                    <strong>Gemini</strong>
+                                    <p>Best for: Research, Google integration, multimodal</p>
+                                    <span class="tool-price">Free / $20/mo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Writing Tools -->
+                    <div class="tool-category">
+                        <h4>Writing & Editing</h4>
+                        <div class="tools-list">
+                            <div class="tool-item">
+                                <div class="tool-icon">📝</div>
+                                <div class="tool-info">
+                                    <strong>Grammarly</strong>
+                                    <p>Grammar, spelling, clarity suggestions</p>
+                                    <span class="tool-price">Free / $12/mo</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">✍️</div>
+                                <div class="tool-info">
+                                    <strong>Hemingway Editor</strong>
+                                    <p>Readability and clarity analysis</p>
+                                    <span class="tool-price">Free online</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">🔍</div>
+                                <div class="tool-info">
+                                    <strong>QuillBot</strong>
+                                    <p>Paraphrasing and summarizing</p>
+                                    <span class="tool-price">Free / $10/mo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Tools -->
+                    <div class="tool-category">
+                        <h4>Research & Sources</h4>
+                        <div class="tools-list">
+                            <div class="tool-item">
+                                <div class="tool-icon">🔬</div>
+                                <div class="tool-info">
+                                    <strong>Perplexity</strong>
+                                    <p>AI search with cited sources</p>
+                                    <span class="tool-price">Free / $20/mo</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">📚</div>
+                                <div class="tool-info">
+                                    <strong>Semantic Scholar</strong>
+                                    <p>Academic paper search with AI summaries</p>
+                                    <span class="tool-price">Free</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">📖</div>
+                                <div class="tool-info">
+                                    <strong>Elicit</strong>
+                                    <p>AI research assistant for papers</p>
+                                    <span class="tool-price">Free / $10/mo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Study Tools -->
+                    <div class="tool-category">
+                        <h4>Study & Memorization</h4>
+                        <div class="tools-list">
+                            <div class="tool-item">
+                                <div class="tool-icon">🃏</div>
+                                <div class="tool-info">
+                                    <strong>Anki</strong>
+                                    <p>Spaced repetition flashcards</p>
+                                    <span class="tool-price">Free</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">📱</div>
+                                <div class="tool-info">
+                                    <strong>Quizlet</strong>
+                                    <p>Flashcards with AI-generated content</p>
+                                    <span class="tool-price">Free / $8/mo</span>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon">🎯</div>
+                                <div class="tool-info">
+                                    <strong>Notion AI</strong>
+                                    <p>Notes + AI organization</p>
+                                    <span class="tool-price">Free / $10/mo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ethics Quick Reference -->
+            <section class="resource-section">
+                <h3 class="section-title-sm">Ethics Quick Reference</h3>
+                <div class="ethics-cards">
+                    <div class="ethics-card green">
+                        <h4>✓ Generally OK</h4>
+                        <ul>
+                            <li>Brainstorming and ideation</li>
+                            <li>Explaining concepts you're learning</li>
+                            <li>Getting feedback on YOUR writing</li>
+                            <li>Creating study materials</li>
+                            <li>Practice questions and quizzes</li>
+                            <li>Grammar and spelling checks</li>
+                            <li>Outlining and organization help</li>
+                        </ul>
+                    </div>
+                    <div class="ethics-card yellow">
+                        <h4>⚠️ Check First</h4>
+                        <ul>
+                            <li>Using AI for any graded work</li>
+                            <li>Summarizing assigned readings</li>
+                            <li>Editing beyond basic grammar</li>
+                            <li>Using AI-suggested sources</li>
+                            <li>Collaborative assignments</li>
+                        </ul>
+                        <p class="ethics-note">Always check your syllabus and ask your professor if unsure.</p>
+                    </div>
+                    <div class="ethics-card red">
+                        <h4>✗ Don't Do</h4>
+                        <ul>
+                            <li>Having AI write your assignments</li>
+                            <li>Submitting AI output as your own work</li>
+                            <li>Using AI during closed-book exams</li>
+                            <li>Copying without understanding</li>
+                            <li>Citing fake sources from AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <style>
+        @media (max-width: 1024px) {
+            #sidebarToggle { display: block !important; }
+        }
+        .resource-section {
+            margin-bottom: 40px;
+        }
+        .section-title-sm {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+        }
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--color-glass);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .checkbox-item:hover {
+            background: var(--color-glass-light);
+        }
+        .checkbox-item input {
+            display: none;
+        }
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--color-border-default);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .checkbox-item input:checked + .checkmark {
+            background: var(--color-accent-green);
+            border-color: var(--color-accent-green);
+        }
+        .checkbox-item input:checked + .checkmark::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+        }
+        .checkbox-item input:checked ~ span:last-child {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        .cheat-sheet {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .cheat-section {
+            margin-bottom: 28px;
+        }
+        .cheat-section:last-child {
+            margin-bottom: 0;
+        }
+        .cheat-section h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-accent-purple);
+            margin-bottom: 12px;
+        }
+        .cheat-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .cheat-section ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--color-border-subtle);
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+        .cheat-section ul li:last-child {
+            border-bottom: none;
+        }
+        .power-phrases {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .phrase {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: var(--color-glass-elevated);
+            border-radius: 8px;
+        }
+        .phrase code {
+            background: rgba(167, 139, 250, 0.2);
+            color: var(--color-accent-purple);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .phrase span {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+        .mistakes-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .mistake {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mistake-bad {
+            color: var(--color-accent-red);
+            font-size: 13px;
+        }
+        .mistake-good {
+            color: var(--color-accent-green);
+            font-size: 13px;
+            padding-left: 20px;
+        }
+        .use-cases {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .use-case {
+            display: flex;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 12px;
+        }
+        .use-case.good {
+            background: rgba(52, 211, 153, 0.08);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+        .use-case.caution {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+        .use-case.bad {
+            background: rgba(248, 113, 113, 0.08);
+            border: 1px solid rgba(248, 113, 113, 0.2);
+        }
+        .use-icon {
+            font-size: 1.25rem;
+        }
+        .use-case strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        .use-case p {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .tool-category {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 16px;
+            padding: 20px;
+        }
+        .tool-category h4 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: var(--color-text-secondary);
+        }
+        .tools-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .tool-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            background: var(--color-glass-elevated);
+            border-radius: 10px;
+        }
+        .tool-icon {
+            font-size: 1.5rem;
+        }
+        .tool-info {
+            flex: 1;
+        }
+        .tool-info strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        .tool-info p {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            margin-bottom: 4px;
+        }
+        .tool-price {
+            font-size: 11px;
+            color: var(--color-accent-purple);
+            background: rgba(167, 139, 250, 0.12);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .ethics-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .ethics-card {
+            padding: 20px;
+            border-radius: 16px;
+        }
+        .ethics-card.green {
+            background: rgba(52, 211, 153, 0.08);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+        .ethics-card.yellow {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+        .ethics-card.red {
+            background: rgba(248, 113, 113, 0.08);
+            border: 1px solid rgba(248, 113, 113, 0.2);
+        }
+        .ethics-card h4 {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .ethics-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .ethics-card li {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .ethics-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+        }
+        .ethics-note {
+            margin-top: 12px;
+            font-size: 12px;
+            font-style: italic;
+            color: var(--color-text-tertiary);
+        }
+    </style>
+
+    <script src="../assets/main.js"></script>
+    <script src="../assets/portal.js"></script>
+    <script>
+        // Save checklist state
+        const checkboxes = document.querySelectorAll('.checkbox-item input');
+
+        checkboxes.forEach((checkbox, index) => {
+            const key = `tms_checklist_${index}`;
+            checkbox.checked = localStorage.getItem(key) === 'true';
+
+            checkbox.addEventListener('change', () => {
+                localStorage.setItem(key, checkbox.checked);
+            });
+        });
+
+        function copyCheatSheet() {
+            const cheatSheet = document.getElementById('cheatSheet');
+            const text = cheatSheet.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Cheat sheet copied to clipboard!', 'success');
+            });
+        }
+    </script>
+</body>
+</html>

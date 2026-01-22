@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the complete curriculum: 6 modules, 24 lessons covering AI for essays, research, math, coding, and more.">
+    <title>Curriculum — The Modern Student</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-center">
+            <div class="navbar-links">
+                <a href="how-it-works.html">How It Works</a>
+                <a href="curriculum.html" class="active">Curriculum</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="faq.html">FAQ</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <div class="counter-pill"><span class="counter-number" id="counterValue">1,247</span><span>students helped</span><div class="counter-tooltip">Includes course + workshop participants</div></div>
+            <button class="btn btn-primary btn-sm" onclick="openAccessModal()">Get Access</button>
+            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <button class="btn btn-primary" onclick="openAccessModal()">Get Access</button>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container page-header-content">
+            <p class="page-label">What You'll Learn</p>
+            <h1 class="page-title">Full <span class="text-gradient">Curriculum</span></h1>
+            <p class="page-subtitle">6 comprehensive modules with 24 lessons covering every aspect of AI-powered academic success.</p>
+        </div>
+    </header>
+
+    <!-- Overview Stats -->
+    <section class="section-sm" style="background: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border-subtle);">
+        <div class="container">
+            <div style="display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;">
+                <div class="text-center">
+                    <div style="font-size: 2rem; font-weight: 700; margin-bottom: 4px;" class="text-gradient">6</div>
+                    <div style="font-size: 13px; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.05em;">Modules</div>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 2rem; font-weight: 700; margin-bottom: 4px;" class="text-gradient">24</div>
+                    <div style="font-size: 13px; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.05em;">Lessons</div>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 2rem; font-weight: 700; margin-bottom: 4px;" class="text-gradient">4+</div>
+                    <div style="font-size: 13px; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.05em;">Hours Content</div>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 2rem; font-weight: 700; margin-bottom: 4px;" class="text-gradient">200+</div>
+                    <div style="font-size: 13px; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.05em;">Prompts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules -->
+    <section class="section">
+        <div class="container-narrow">
+            <!-- Module 1 -->
+            <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                    <div style="width: 48px; height: 48px; background: rgba(167, 139, 250, 0.16); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🎯</div>
+                    <div>
+                        <span class="badge" style="margin-bottom: 4px;">Module 1</span>
+                        <h3>Foundations</h3>
+                    </div>
+                    <div style="margin-left: auto; font-size: 13px; color: var(--color-text-tertiary);">4 lessons • 45 min</div>
+                </div>
+                <p class="text-secondary" style="margin-bottom: 20px;">Master the fundamentals of AI communication. Learn how these tools actually work, what they're good at, and how to get exactly what you need.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>1.1 How AI Actually Works (No Jargon)</span>
+                        <span class="text-tertiary">10 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>1.2 The Art of Prompting</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>1.3 Common Mistakes & How to Avoid Them</span>
+                        <span class="text-tertiary">11 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>1.4 Setting Up Your AI Toolkit</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                    <div style="width: 48px; height: 48px; background: rgba(244, 114, 182, 0.16); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📚</div>
+                    <div>
+                        <span class="badge" style="margin-bottom: 4px;">Module 2</span>
+                        <h3>Study Systems</h3>
+                    </div>
+                    <div style="margin-left: auto; font-size: 13px; color: var(--color-text-tertiary);">4 lessons • 50 min</div>
+                </div>
+                <p class="text-secondary" style="margin-bottom: 20px;">Build AI-enhanced study routines that actually stick. Learn to summarize readings, create flashcards, and prepare for exams more effectively.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>2.1 Summarizing Dense Readings</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>2.2 Creating Effective Flashcards</span>
+                        <span class="text-tertiary">10 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>2.3 Note-Taking with AI Enhancement</span>
+                        <span class="text-tertiary">14 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>2.4 Active Recall & Spaced Repetition</span>
+                        <span class="text-tertiary">14 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                    <div style="width: 48px; height: 48px; background: rgba(96, 165, 250, 0.16); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📝</div>
+                    <div>
+                        <span class="badge" style="margin-bottom: 4px;">Module 3</span>
+                        <h3>Writing Excellence</h3>
+                    </div>
+                    <div style="margin-left: auto; font-size: 13px; color: var(--color-text-tertiary);">4 lessons • 55 min</div>
+                </div>
+                <p class="text-secondary" style="margin-bottom: 20px;">Master the AI-assisted writing process. From brainstorming to final edit, learn to write better papers faster while keeping your authentic voice.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>3.1 Brainstorming & Thesis Development</span>
+                        <span class="text-tertiary">14 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>3.2 Outlining with AI</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>3.3 Drafting: Your Voice, AI-Assisted</span>
+                        <span class="text-tertiary">15 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>3.4 Revision & Editing Workflows</span>
+                        <span class="text-tertiary">14 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                    <div style="width: 48px; height: 48px; background: rgba(34, 211, 238, 0.16); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🔬</div>
+                    <div>
+                        <span class="badge" style="margin-bottom: 4px;">Module 4</span>
+                        <h3>Research Accelerated</h3>
+                    </div>
+                    <div style="margin-left: auto; font-size: 13px; color: var(--color-text-tertiary);">4 lessons • 48 min</div>
+                </div>
+                <p class="text-secondary" style="margin-bottom: 20px;">Find sources faster, understand papers better, and build bibliographies automatically. Cut your research time in half.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>4.1 Finding Credible Sources Fast</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>4.2 Understanding Academic Papers</span>
+                        <span class="text-tertiary">13 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>4.3 Literature Review Workflows</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>4.4 Citations & Bibliography Tools</span>
+                        <span class="text-tertiary">11 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                    <div style="width: 48px; height: 48px; background: rgba(251, 146, 60, 0.16); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🧮</div>
+                    <div>
+                        <span class="badge" style="margin-bottom: 4px;">Module 5</span>
+                        <h3>STEM & Code</h3>
+                    </div>
+                    <div style="margin-left: auto; font-size: 13px; color: var(--color-text-tertiary);">4 lessons • 52 min</div>
+                </div>
+                <p class="text-secondary" style="margin-bottom: 20px;">AI for math, science, and programming. Learn concepts deeply, debug faster, and use AI as your personal STEM tutor.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>5.1 Math Problem-Solving (The Right Way)</span>
+                        <span class="text-tertiary">14 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>5.2 Science Concepts & Lab Reports</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>5.3 Coding with AI Assistance</span>
+                        <span class="text-tertiary">14 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>5.4 Debugging & Code Review</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                    <div style="width: 48px; height: 48px; background: rgba(52, 211, 153, 0.16); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🎓</div>
+                    <div>
+                        <span class="badge" style="margin-bottom: 4px;">Module 6</span>
+                        <h3>Exam Prep & Ethics</h3>
+                    </div>
+                    <div style="margin-left: auto; font-size: 13px; color: var(--color-text-tertiary);">4 lessons • 45 min</div>
+                </div>
+                <p class="text-secondary" style="margin-bottom: 20px;">Prepare for exams effectively and understand the ethical boundaries of AI use. Graduate with your integrity intact.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>6.1 Exam Preparation Strategies</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>6.2 Practice Problems & Self-Testing</span>
+                        <span class="text-tertiary">11 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>6.3 Academic Integrity Deep Dive</span>
+                        <span class="text-tertiary">12 min</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--color-bg-tertiary); border-radius: 8px; font-size: 14px;">
+                        <span>6.4 Talking to Professors About AI</span>
+                        <span class="text-tertiary">10 min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prerequisites -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container-narrow">
+            <div class="section-header">
+                <h2 class="section-title">Prerequisites</h2>
+                <p class="section-subtitle">Here's what you need to get started.</p>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <div class="card">
+                    <h4 style="margin-bottom: 12px; color: var(--color-accent-green);">✓ Required</h4>
+                    <ul style="list-style: none; color: var(--color-text-secondary);">
+                        <li style="padding: 8px 0;">A computer or tablet with internet</li>
+                        <li style="padding: 8px 0;">Basic familiarity with typing</li>
+                        <li style="padding: 8px 0;">Willingness to learn</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 12px; color: var(--color-text-tertiary);">○ Not Required</h4>
+                    <ul style="list-style: none; color: var(--color-text-tertiary);">
+                        <li style="padding: 8px 0;">Prior AI or coding experience</li>
+                        <li style="padding: 8px 0;">Paid AI subscriptions (free tiers work)</li>
+                        <li style="padding: 8px 0;">Any specific major or year</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 16px;">Ready to <span class="text-gradient">Start Learning?</span></h2>
+            <p class="text-secondary" style="font-size: 18px; margin-bottom: 32px;">Get instant access to all 24 lessons plus templates, workflows, and tools.</p>
+            <a href="pricing.html" class="btn btn-primary btn-lg">View Pricing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><defs><linearGradient id="footerGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#footerGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#footerGrad)"/></svg>
+                    <span>The Modern Student</span>
+                </div>
+                <div class="footer-links">
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="curriculum.html">Curriculum</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-copyright">© 2025 The Modern Student. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="pricing.html" class="floating-cta" id="floatingCta">View Pricing</a>
+
+    <div id="accessModal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal">
+            <button class="modal-close" onclick="closeAccessModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">🔐</div>
+                <h2 class="modal-title">Enter Access Code</h2>
+                <span id="modalTier" class="badge badge-primary" style="margin-top: 8px;">STANDARD</span>
+            </div>
+            <div class="modal-body">
+                <form id="accessForm">
+                    <input type="text" id="accessCode" class="form-input" placeholder="ACCESS CODE" autocomplete="off" style="text-align: center; letter-spacing: 3px; margin-bottom: 16px;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Unlock Portal</button>
+                </form>
+                <p id="accessError" style="color: var(--color-accent-red); font-size: 14px; margin-top: 16px; display: none;">Invalid access code.</p>
+            </div>
+            <div class="modal-footer"><p>Don't have a code? <a href="pricing.html">Get access</a></p></div>
+        </div>
+    </div>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>

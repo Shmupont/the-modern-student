@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifying Access — The Modern Student</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="success-page">
+        <div class="success-container">
+            <!-- Loading State -->
+            <div id="loadingState" class="success-state">
+                <div class="success-spinner"></div>
+                <h2>Verifying Your Purchase</h2>
+                <p>Please wait while we confirm your payment...</p>
+            </div>
+
+            <!-- Success State -->
+            <div id="successState" class="success-state" style="display: none;">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <h2>Welcome to The Modern Student!</h2>
+                <p id="successMessage">Your access has been activated.</p>
+                <div class="success-details" id="successDetails">
+                    <!-- Filled by JS -->
+                </div>
+                <a href="portal/index.html" class="btn btn-primary btn-lg">Go to Your Portal</a>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="success-state" style="display: none;">
+                <div class="error-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+                <h2>Something Went Wrong</h2>
+                <p id="errorMessage">We couldn't verify your purchase.</p>
+                <div class="error-actions">
+                    <button class="btn btn-primary" onclick="retryVerification()">Try Again</button>
+                    <a href="contact.html" class="btn btn-ghost">Contact Support</a>
+                </div>
+            </div>
+
+            <!-- Already Has Access State -->
+            <div id="alreadyAccessState" class="success-state" style="display: none;">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <h2>You Already Have Access</h2>
+                <p>Your portal is ready and waiting for you.</p>
+                <a href="portal/index.html" class="btn btn-primary btn-lg">Go to Your Portal</a>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .success-page {
+            min-height: calc(100vh - var(--navbar-height));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .success-container {
+            max-width: 480px;
+            width: 100%;
+        }
+        .success-state {
+            text-align: center;
+            padding: 40px;
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 20px;
+        }
+        .success-state h2 {
+            margin-bottom: 12px;
+        }
+        .success-state > p {
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+        }
+        .success-spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--color-border-subtle);
+            border-top-color: var(--color-accent-purple);
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(52, 211, 153, 0.16);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--color-accent-green);
+        }
+        .success-icon svg {
+            width: 36px;
+            height: 36px;
+        }
+        .error-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(248, 113, 113, 0.16);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--color-accent-red);
+        }
+        .error-icon svg {
+            width: 36px;
+            height: 36px;
+        }
+        .success-details {
+            background: var(--color-glass-elevated);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        .success-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        .success-detail-row:not(:last-child) {
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+        .success-detail-label {
+            color: var(--color-text-tertiary);
+        }
+        .success-detail-value {
+            font-weight: 600;
+        }
+        .error-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+    </style>
+
+    <script src="assets/main.js"></script>
+    <script>
+        const API_BASE = '/api';
+        const TOKEN_KEY = 'tms_access_token';
+
+        // Get session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        // States
+        const loadingState = document.getElementById('loadingState');
+        const successState = document.getElementById('successState');
+        const errorState = document.getElementById('errorState');
+        const alreadyAccessState = document.getElementById('alreadyAccessState');
+
+        function showState(state) {
+            loadingState.style.display = 'none';
+            successState.style.display = 'none';
+            errorState.style.display = 'none';
+            alreadyAccessState.style.display = 'none';
+            state.style.display = 'block';
+        }
+
+        function getAccessToken() {
+            const tokenData = localStorage.getItem(TOKEN_KEY);
+            if (!tokenData) return null;
+            try {
+                const token = JSON.parse(tokenData);
+                if (token.expires_at && Date.now() > token.expires_at) {
+                    localStorage.removeItem(TOKEN_KEY);
+                    return null;
+                }
+                return token;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function hasValidAccess() {
+            const token = getAccessToken();
+            if (!token) return false;
+            return token.course_access || token.member_access;
+        }
+
+        async function verifySession() {
+            // If no session ID, check if already has access
+            if (!sessionId) {
+                if (hasValidAccess()) {
+                    showState(alreadyAccessState);
+                } else {
+                    document.getElementById('errorMessage').textContent =
+                        'No session ID found. Please complete the checkout process.';
+                    showState(errorState);
+                }
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/verify-session?session_id=${sessionId}`);
+
+                if (!response.ok) {
+                    throw new Error('Verification failed');
+                }
+
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Store the access token
+                localStorage.setItem(TOKEN_KEY, JSON.stringify({
+                    course_access: data.course_access,
+                    member_access: data.member_access,
+                    expires_at: data.expires_at,
+                    customer_id: data.customer_id,
+                    verified_at: Date.now()
+                }));
+
+                // Also set legacy keys for backwards compatibility
+                if (data.course_access || data.member_access) {
+                    localStorage.setItem('tms_access_granted', 'true');
+                    localStorage.setItem('tms_access_tier', data.member_access ? 'premium' : 'standard');
+                    localStorage.setItem('tms_activated_date', new Date().toISOString());
+                }
+
+                // Show success
+                const details = document.getElementById('successDetails');
+                details.innerHTML = `
+                    <div class="success-detail-row">
+                        <span class="success-detail-label">Plan</span>
+                        <span class="success-detail-value">${data.member_access ? 'Membership' : 'Course Access'}</span>
+                    </div>
+                    <div class="success-detail-row">
+                        <span class="success-detail-label">Course Access</span>
+                        <span class="success-detail-value" style="color: var(--color-accent-green);">✓ Active</span>
+                    </div>
+                    ${data.member_access ? `
+                    <div class="success-detail-row">
+                        <span class="success-detail-label">Community Access</span>
+                        <span class="success-detail-value" style="color: var(--color-accent-green);">✓ Active</span>
+                    </div>
+                    ` : ''}
+                `;
+
+                document.getElementById('successMessage').textContent =
+                    data.member_access
+                        ? 'Welcome to the membership! You have full access to everything.'
+                        : 'Your lifetime course access has been activated.';
+
+                showState(successState);
+
+            } catch (error) {
+                console.error('Verification error:', error);
+                document.getElementById('errorMessage').textContent =
+                    'We couldn\'t verify your purchase. Please try again or contact support.';
+                showState(errorState);
+            }
+        }
+
+        function retryVerification() {
+            showState(loadingState);
+            verifySession();
+        }
+
+        // Run verification on page load
+        verifySession();
+    </script>
+</body>
+</html>

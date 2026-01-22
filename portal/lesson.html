@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson — The Modern Student Portal</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-right">
+            <span class="badge badge-success">Access Granted</span>
+            <button class="btn btn-ghost btn-sm" id="sidebarToggle" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="portal-layout">
+        <!-- Sidebar -->
+        <aside class="portal-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Learn</div>
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </a>
+                    <a href="lessons.html" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Lessons
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Resources</div>
+                <nav class="sidebar-nav">
+                    <a href="workflows.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Workflows
+                    </a>
+                    <a href="templates.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Templates
+                    </a>
+                    <a href="resources.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Resources
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Account</div>
+                <nav class="sidebar-nav">
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Settings
+                    </a>
+                    <button class="sidebar-link" onclick="logout()" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Log Out
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="portal-main">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" style="margin-bottom: 24px;">
+                <a href="lessons.html">Lessons</a>
+                <span class="breadcrumb-sep">/</span>
+                <span id="moduleName">Module 1</span>
+                <span class="breadcrumb-sep">/</span>
+                <span id="lessonTitle">Lesson</span>
+            </nav>
+
+            <!-- Micro-Lesson Content -->
+            <div class="micro-lesson">
+                <div class="micro-lesson-header">
+                    <span class="micro-lesson-time">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span id="lessonTime">8 min read</span>
+                    </span>
+                </div>
+                <div class="micro-lesson-body" id="microLessonContent">
+                    <p>Large Language Models (LLMs) like ChatGPT don't actually "understand" language the way humans do. Instead, they predict the most likely next word based on patterns learned from billions of text examples. This is why your prompt matters so much—the more context and specificity you provide, the better the pattern match.</p>
+
+                    <p>Think of it like autocomplete on steroids. When you type a vague request, the AI has millions of possible "next words" to choose from. When you're specific, you narrow down the options to exactly what you need. The difference between a mediocre response and a brilliant one often comes down to how well you've constrained the possibilities.</p>
+
+                    <p>Here's the key insight: AI doesn't know what you're thinking. It can only work with what you give it. Students who get the best results treat prompting like a skill—they iterate, refine, and learn what works. Your first prompt is rarely your best prompt.</p>
+                </div>
+                <div class="micro-lesson-mistake">
+                    <span class="mistake-label">Common mistake:</span>
+                    <span class="mistake-text">Asking "explain this concept" without specifying your level of understanding or desired format.</span>
+                </div>
+            </div>
+
+            <!-- Lesson Header -->
+            <div class="lesson-header">
+                <div>
+                    <span class="lesson-badge" id="lessonBadge">Lesson 1.1</span>
+                    <h1 id="lessonHeading">How AI Actually Works</h1>
+                    <p class="lesson-description" id="lessonDescription">Understand the basics of LLMs and why prompts matter</p>
+                </div>
+                <div class="lesson-actions">
+                    <button class="btn btn-ghost btn-sm" id="favoriteBtn" onclick="toggleFavorite()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        <span>Save</span>
+                    </button>
+                    <button class="btn btn-primary btn-sm" id="completeBtn" onclick="toggleComplete()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                        <span>Mark Complete</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lesson-content-grid">
+                <!-- Main Content -->
+                <div class="lesson-main">
+                    <!-- Key Takeaways -->
+                    <div class="content-section">
+                        <h3>Key Takeaways</h3>
+                        <ul class="takeaways-list" id="takeawaysList">
+                            <li>AI models predict the next word based on patterns in training data</li>
+                            <li>Better prompts = better outputs (garbage in, garbage out)</li>
+                            <li>AI doesn't "understand" — it recognizes patterns</li>
+                            <li>Context and specificity dramatically improve results</li>
+                        </ul>
+                    </div>
+
+                    <!-- Step by Step -->
+                    <div class="content-section">
+                        <h3>Step-by-Step Process</h3>
+                        <div class="steps-list" id="stepsList">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Start with Context</h4>
+                                    <p>Tell the AI who you are and what you're working on. "I'm a college student working on a psychology paper about..."</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Be Specific About the Output</h4>
+                                    <p>Describe exactly what you want. Instead of "help me understand," try "explain in 3 bullet points suitable for a beginner."</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Iterate and Refine</h4>
+                                    <p>Your first prompt rarely produces the best result. Ask follow-up questions to refine and improve.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Try It Yourself -->
+                    <div class="content-section">
+                        <h3>Try It Yourself</h3>
+                        <div class="prompt-box">
+                            <div class="prompt-header">
+                                <span class="prompt-label">Sample Prompt</span>
+                                <button class="btn btn-ghost btn-sm" onclick="copyPrompt(this)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                    Copy
+                                </button>
+                            </div>
+                            <pre class="prompt-content" id="samplePrompt">I'm a [your major] student trying to understand [concept].
+
+Please explain this concept in simple terms, using an analogy that would make sense to someone with no prior knowledge.
+
+Then give me 3 questions I could use to test my understanding.</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lesson-sidebar">
+                    <!-- Navigation -->
+                    <div class="nav-card">
+                        <h4>Lesson Navigation</h4>
+                        <div class="nav-links">
+                            <a href="#" id="prevLesson" class="nav-link prev">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                                <span>Previous Lesson</span>
+                            </a>
+                            <a href="#" id="nextLesson" class="nav-link next">
+                                <span>Next Lesson</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Related Resources -->
+                    <div class="nav-card">
+                        <h4>Related Resources</h4>
+                        <div class="related-links" id="relatedResources">
+                            <a href="workflows.html" class="related-link">
+                                <span>📋</span>
+                                <span>Related Workflows</span>
+                            </a>
+                            <a href="templates.html" class="related-link">
+                                <span>📝</span>
+                                <span>Templates</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module Progress -->
+                    <div class="nav-card">
+                        <h4>Module Progress</h4>
+                        <div class="module-progress">
+                            <div class="progress-bar" style="height: 6px;">
+                                <div class="progress-fill" id="moduleProgress" style="width: 25%;"></div>
+                            </div>
+                            <p id="moduleProgressText">1 of 4 lessons completed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <style>
+        @media (max-width: 1024px) {
+            #sidebarToggle { display: block !important; }
+        }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        .breadcrumb a {
+            color: var(--color-text-tertiary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--color-accent-purple);
+        }
+        .breadcrumb-sep {
+            color: var(--color-text-tertiary);
+        }
+        .micro-lesson {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        .micro-lesson-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        .micro-lesson-time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--color-text-tertiary);
+        }
+        .micro-lesson-body {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--color-text-secondary);
+        }
+        .micro-lesson-body p {
+            margin-bottom: 20px;
+        }
+        .micro-lesson-body p:last-child {
+            margin-bottom: 0;
+        }
+        .micro-lesson-mistake {
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(248, 113, 113, 0.08);
+            border: 1px solid rgba(248, 113, 113, 0.16);
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .mistake-label {
+            font-weight: 600;
+            color: var(--color-accent-red);
+            margin-right: 6px;
+        }
+        .mistake-text {
+            color: var(--color-text-secondary);
+        }
+        .lesson-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .lesson-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-accent-purple);
+            background: rgba(167, 139, 250, 0.12);
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .lesson-header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+        }
+        .lesson-description {
+            color: var(--color-text-secondary);
+            font-size: 15px;
+        }
+        .lesson-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .lesson-actions .btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        #favoriteBtn.active svg {
+            fill: var(--color-accent-pink);
+            stroke: var(--color-accent-pink);
+        }
+        #completeBtn.completed {
+            background: var(--color-accent-green);
+        }
+        .lesson-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 32px;
+        }
+        @media (max-width: 900px) {
+            .lesson-content-grid {
+                grid-template-columns: 1fr;
+            }
+            .lesson-sidebar {
+                order: -1;
+            }
+        }
+        .content-section {
+            margin-bottom: 32px;
+        }
+        .content-section h3 {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+        }
+        .takeaways-list {
+            list-style: none;
+            padding: 0;
+        }
+        .takeaways-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-border-subtle);
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .takeaways-list li:last-child {
+            border-bottom: none;
+        }
+        .takeaways-list li::before {
+            content: '✓';
+            color: var(--color-accent-green);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .step-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 12px;
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+        .prompt-box {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--color-glass-elevated);
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+        .prompt-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+        }
+        .prompt-content {
+            padding: 16px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            white-space: pre-wrap;
+            margin: 0;
+            background: transparent;
+        }
+        .nav-card {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .nav-card h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+            margin-bottom: 12px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            background: var(--color-glass-elevated);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            background: var(--color-glass-light);
+            color: var(--color-text-primary);
+        }
+        .nav-link.next {
+            justify-content: flex-end;
+        }
+        .nav-link.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .related-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .related-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--color-glass-elevated);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .related-link:hover {
+            background: var(--color-glass-light);
+            color: var(--color-text-primary);
+        }
+        .module-progress {
+            text-align: center;
+        }
+        .module-progress p {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            margin-top: 8px;
+        }
+    </style>
+
+    <script src="../assets/main.js"></script>
+    <script src="../assets/portal.js"></script>
+    <script>
+        // Lesson data
+        const lessons = {
+            '1-1': { module: 1, title: 'How AI Actually Works', description: 'Understand the basics of LLMs and why prompts matter', duration: '8 min' },
+            '1-2': { module: 1, title: 'The Ethics Framework', description: "Where's the line? Understanding academic integrity with AI", duration: '12 min' },
+            '1-3': { module: 1, title: 'Choosing Your Tools', description: 'ChatGPT vs Claude vs Gemini: picking the right AI', duration: '10 min' },
+            '1-4': { module: 1, title: 'Your First Prompt', description: 'From vague to precise: crafting effective requests', duration: '15 min' },
+            '2-1': { module: 2, title: 'The Feynman Technique + AI', description: 'Use AI to test and deepen your understanding', duration: '11 min' },
+            '2-2': { module: 2, title: 'Smart Flashcard Generation', description: 'Create effective flashcards from any material', duration: '9 min' },
+            '2-3': { module: 2, title: 'Lecture Note Enhancement', description: 'Transform messy notes into structured study guides', duration: '13 min' },
+            '2-4': { module: 2, title: 'Concept Mapping with AI', description: 'Visualize connections between ideas', duration: '10 min' },
+            '3-1': { module: 3, title: 'Brainstorming & Outlining', description: 'Generate ideas and structure without writing for you', duration: '14 min' },
+            '3-2': { module: 3, title: 'The Feedback Loop', description: 'Get constructive criticism on YOUR writing', duration: '12 min' },
+            '3-3': { module: 3, title: 'Citation & Source Finding', description: 'Research assistance without fabrication', duration: '11 min' },
+            '3-4': { module: 3, title: 'Editing & Proofreading', description: 'Polish your work while keeping your voice', duration: '10 min' },
+            '4-1': { module: 4, title: 'Research Question Refinement', description: 'Sharpen your focus with AI brainstorming', duration: '9 min' },
+            '4-2': { module: 4, title: 'Literature Review Strategies', description: 'Summarize papers and identify key themes', duration: '15 min' },
+            '4-3': { module: 4, title: 'Data Interpretation Help', description: 'Understand statistics and research findings', duration: '13 min' },
+            '4-4': { module: 4, title: 'Fact-Checking & Verification', description: 'Validate AI outputs and avoid hallucinations', duration: '11 min' },
+            '5-1': { module: 5, title: 'Weekly Planning with AI', description: 'Create realistic study schedules that stick', duration: '10 min' },
+            '5-2': { module: 5, title: 'Assignment Breakdown', description: 'Turn overwhelming projects into manageable tasks', duration: '12 min' },
+            '5-3': { module: 5, title: 'Email & Communication', description: 'Draft professional messages efficiently', duration: '8 min' },
+            '5-4': { module: 5, title: 'Building Your AI Toolkit', description: 'Create a personalized system that works for you', duration: '14 min' },
+            '6-1': { module: 6, title: 'Practice Question Generation', description: 'Create custom practice tests from your materials', duration: '11 min' },
+            '6-2': { module: 6, title: 'Concept Deep Dives', description: 'Master difficult topics through dialogue', duration: '13 min' },
+            '6-3': { module: 6, title: 'Memory Techniques', description: 'AI-generated mnemonics and memory palaces', duration: '10 min' },
+            '6-4': { module: 6, title: 'Exam Day Strategies', description: 'Last-minute prep and confidence building', duration: '9 min' }
+        };
+
+        const moduleNames = {
+            1: 'Foundations',
+            2: 'Study Systems',
+            3: 'Writing',
+            4: 'Research',
+            5: 'Productivity',
+            6: 'Exam Prep'
+        };
+
+        const lessonOrder = Object.keys(lessons);
+
+        // Get current lesson ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const lessonId = urlParams.get('id') || '1-1';
+        const lesson = lessons[lessonId];
+
+        if (lesson) {
+            // Update page content
+            document.title = `${lesson.title} — The Modern Student Portal`;
+            document.getElementById('moduleName').textContent = `Module ${lesson.module}: ${moduleNames[lesson.module]}`;
+            document.getElementById('lessonTitle').textContent = lesson.title;
+            document.getElementById('lessonBadge').textContent = `Lesson ${lessonId}`;
+            document.getElementById('lessonHeading').textContent = lesson.title;
+            document.getElementById('lessonDescription').textContent = lesson.description;
+
+            // Setup navigation
+            const currentIndex = lessonOrder.indexOf(lessonId);
+            const prevLesson = document.getElementById('prevLesson');
+            const nextLesson = document.getElementById('nextLesson');
+
+            if (currentIndex > 0) {
+                const prevId = lessonOrder[currentIndex - 1];
+                prevLesson.href = `lesson.html?id=${prevId}`;
+                prevLesson.querySelector('span').textContent = lessons[prevId].title;
+            } else {
+                prevLesson.classList.add('disabled');
+            }
+
+            if (currentIndex < lessonOrder.length - 1) {
+                const nextId = lessonOrder[currentIndex + 1];
+                nextLesson.href = `lesson.html?id=${nextId}`;
+                nextLesson.querySelector('span').textContent = lessons[nextId].title;
+            } else {
+                nextLesson.classList.add('disabled');
+            }
+
+            // Update module progress
+            updateModuleProgress();
+        }
+
+        function updateModuleProgress() {
+            const completedLessons = JSON.parse(localStorage.getItem('tms_completed_lessons') || '[]');
+            const moduleNum = lesson.module;
+            const moduleLessons = lessonOrder.filter(id => lessons[id].module === moduleNum);
+            const completedInModule = moduleLessons.filter(id => completedLessons.includes(id)).length;
+
+            const progressPercent = (completedInModule / moduleLessons.length) * 100;
+            document.getElementById('moduleProgress').style.width = progressPercent + '%';
+            document.getElementById('moduleProgressText').textContent = `${completedInModule} of ${moduleLessons.length} lessons completed`;
+        }
+
+        // Check completion status
+        function updateCompletionStatus() {
+            const completedLessons = JSON.parse(localStorage.getItem('tms_completed_lessons') || '[]');
+            const btn = document.getElementById('completeBtn');
+
+            if (completedLessons.includes(lessonId)) {
+                btn.classList.add('completed');
+                btn.querySelector('span').textContent = 'Completed';
+            }
+        }
+
+        function toggleComplete() {
+            const completedLessons = JSON.parse(localStorage.getItem('tms_completed_lessons') || '[]');
+            const btn = document.getElementById('completeBtn');
+            const index = completedLessons.indexOf(lessonId);
+
+            if (index === -1) {
+                completedLessons.push(lessonId);
+                btn.classList.add('completed');
+                btn.querySelector('span').textContent = 'Completed';
+                showToast('Lesson marked as complete!', 'success');
+            } else {
+                completedLessons.splice(index, 1);
+                btn.classList.remove('completed');
+                btn.querySelector('span').textContent = 'Mark Complete';
+                showToast('Lesson marked as incomplete', 'info');
+            }
+
+            localStorage.setItem('tms_completed_lessons', JSON.stringify(completedLessons));
+            updateModuleProgress();
+            if (typeof updateProgress === 'function') updateProgress();
+        }
+
+        // Favorites
+        function updateFavoriteStatus() {
+            const favorites = JSON.parse(localStorage.getItem('tms_favorites') || '[]');
+            const btn = document.getElementById('favoriteBtn');
+
+            if (favorites.includes(lessonId)) {
+                btn.classList.add('active');
+                btn.querySelector('span').textContent = 'Saved';
+            }
+        }
+
+        function toggleFavorite() {
+            const favorites = JSON.parse(localStorage.getItem('tms_favorites') || '[]');
+            const btn = document.getElementById('favoriteBtn');
+            const index = favorites.indexOf(lessonId);
+
+            if (index === -1) {
+                favorites.push(lessonId);
+                btn.classList.add('active');
+                btn.querySelector('span').textContent = 'Saved';
+                showToast('Added to favorites!', 'success');
+            } else {
+                favorites.splice(index, 1);
+                btn.classList.remove('active');
+                btn.querySelector('span').textContent = 'Save';
+                showToast('Removed from favorites', 'info');
+            }
+
+            localStorage.setItem('tms_favorites', JSON.stringify(favorites));
+        }
+
+        // Copy prompt
+        function copyPrompt(btn) {
+            const prompt = document.getElementById('samplePrompt').textContent;
+            navigator.clipboard.writeText(prompt).then(() => {
+                btn.querySelector('svg').style.display = 'none';
+                btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy';
+                }, 2000);
+            });
+        }
+
+        // Initialize
+        updateCompletionStatus();
+        updateFavoriteStatus();
+    </script>
+</body>
+</html>

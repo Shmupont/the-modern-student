@@ -1,0 +1,8 @@
+{
+  "name": "tms-functions",
+  "version": "1.0.0",
+  "description": "Serverless functions for The Modern Student",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — The Modern Student Portal</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-right">
+            <span class="badge badge-success">Access Granted</span>
+            <button class="btn btn-ghost btn-sm" id="sidebarToggle" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="portal-layout">
+        <!-- Sidebar -->
+        <aside class="portal-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Learn</div>
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </a>
+                    <a href="lessons.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Lessons
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Resources</div>
+                <nav class="sidebar-nav">
+                    <a href="workflows.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Workflows
+                    </a>
+                    <a href="templates.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Templates
+                    </a>
+                    <a href="resources.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Resources
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Account</div>
+                <nav class="sidebar-nav">
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Settings
+                    </a>
+                    <button class="sidebar-link" onclick="logout()" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Log Out
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="portal-main">
+            <!-- Welcome Card -->
+            <div class="welcome-card">
+                <h2 class="welcome-title">Welcome back! 👋</h2>
+                <p class="welcome-subtitle">Ready to learn something new today?</p>
+                <a href="lessons.html" class="btn btn-primary">Continue Learning</a>
+            </div>
+
+            <div class="grid grid-2 gap-6" style="margin-bottom: 32px;">
+                <!-- Progress -->
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h4>Your Progress</h4>
+                        <span style="font-size: 1.5rem; font-weight: 700;" class="text-gradient" data-progress-text>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress-fill style="width: 0%;"></div>
+                    </div>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--color-text-tertiary);">
+                        <span data-completed-count>0</span> of 24 lessons completed
+                    </p>
+                </div>
+
+                <!-- Continue Learning -->
+                <div class="progress-card">
+                    <h4 style="margin-bottom: 16px;">Continue Where You Left Off</h4>
+                    <div id="continueLesson">
+                        <a href="lessons.html" class="quick-action" style="padding: 16px;">
+                            <div class="quick-action-icon">▶️</div>
+                            <div class="quick-action-text">
+                                <h4>Start Learning</h4>
+                                <p>Begin with Module 1</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <h4 style="margin-bottom: 16px;">Quick Actions</h4>
+            <div class="quick-actions" style="margin-bottom: 32px;">
+                <a href="lessons.html" class="quick-action">
+                    <div class="quick-action-icon">📚</div>
+                    <div class="quick-action-text">
+                        <h4>Browse Lessons</h4>
+                        <p>24 micro-lessons</p>
+                    </div>
+                </a>
+                <a href="workflows.html" class="quick-action">
+                    <div class="quick-action-icon">⚡</div>
+                    <div class="quick-action-text">
+                        <h4>AI Workflows</h4>
+                        <p>Ready-to-use prompts</p>
+                    </div>
+                </a>
+                <a href="templates.html" class="quick-action">
+                    <div class="quick-action-icon">📝</div>
+                    <div class="quick-action-text">
+                        <h4>Templates</h4>
+                        <p>Copy & customize</p>
+                    </div>
+                </a>
+                <a href="resources.html" class="quick-action">
+                    <div class="quick-action-icon">🔧</div>
+                    <div class="quick-action-text">
+                        <h4>Tool Reviews</h4>
+                        <p>40+ AI tools</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Weekly Checklist -->
+            <div class="grid grid-2 gap-6">
+                <div>
+                    <h4 style="margin-bottom: 16px;">This Week's Goals</h4>
+                    <div id="weeklyChecklist" class="checklist">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Getting Started -->
+                <div>
+                    <h4 style="margin-bottom: 16px;">Getting Started</h4>
+                    <div class="card" style="padding: 20px;">
+                        <ol style="margin-left: 20px; color: var(--color-text-secondary); font-size: 14px;">
+                            <li style="margin-bottom: 12px;">Start with <a href="lesson.html?id=1-1" style="color: var(--color-accent-purple);">Lesson 1.1</a> — How AI Actually Works</li>
+                            <li style="margin-bottom: 12px;">Try the prompts as you learn</li>
+                            <li style="margin-bottom: 12px;">Apply to your real assignments</li>
+                            <li>Track your progress here</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <style>
+        @media (max-width: 1024px) {
+            #sidebarToggle { display: block !important; }
+        }
+        .continue-lesson-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .continue-lesson-link:hover {
+            background: var(--color-glass-light);
+            border-color: var(--color-border-default);
+        }
+        .continue-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .continue-label {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .continue-title {
+            font-weight: 600;
+            display: block;
+        }
+    </style>
+
+    <script src="../assets/main.js"></script>
+    <script src="../assets/portal.js"></script>
+</body>
+</html>

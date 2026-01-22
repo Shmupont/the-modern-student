@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings — The Modern Student Portal</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-right">
+            <span class="badge badge-success">Access Granted</span>
+            <button class="btn btn-ghost btn-sm" id="sidebarToggle" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="portal-layout">
+        <!-- Sidebar -->
+        <aside class="portal-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Learn</div>
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </a>
+                    <a href="lessons.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Lessons
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Resources</div>
+                <nav class="sidebar-nav">
+                    <a href="workflows.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Workflows
+                    </a>
+                    <a href="templates.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Templates
+                    </a>
+                    <a href="resources.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Resources
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Account</div>
+                <nav class="sidebar-nav">
+                    <a href="settings.html" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Settings
+                    </a>
+                    <button class="sidebar-link" onclick="logout()" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Log Out
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="portal-main">
+            <!-- Header -->
+            <div style="margin-bottom: 32px;">
+                <h2 style="margin-bottom: 4px;">Settings</h2>
+                <p class="text-secondary" style="font-size: 14px;">Manage your account and preferences</p>
+            </div>
+
+            <!-- Access Status -->
+            <section class="settings-section">
+                <h3>Access Status</h3>
+                <div class="settings-card">
+                    <div class="status-row">
+                        <div class="status-info">
+                            <div class="status-icon success">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <strong>Access Granted</strong>
+                                <p id="accessTier">Standard Access</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-ghost btn-sm" onclick="logout()">Log Out</button>
+                    </div>
+                    <div class="access-details">
+                        <div class="detail-row">
+                            <span>Access Code</span>
+                            <span id="accessCodeDisplay">••••••••</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Activated</span>
+                            <span id="activatedDate">—</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Stats -->
+            <section class="settings-section">
+                <h3>Your Progress</h3>
+                <div class="settings-card">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="lessonsCompleted">0</span>
+                            <span class="stat-label">Lessons Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="progressPercent">0%</span>
+                            <span class="stat-label">Course Progress</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="favoritesCount">0</span>
+                            <span class="stat-label">Saved Favorites</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="checklistCount">0</span>
+                            <span class="stat-label">Checklist Items Done</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preferences -->
+            <section class="settings-section">
+                <h3>Preferences</h3>
+                <div class="settings-card">
+                    <div class="preference-row">
+                        <div class="preference-info">
+                            <strong>Reduced Motion</strong>
+                            <p>Minimize animations and transitions</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="reducedMotion">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="preference-row">
+                        <div class="preference-info">
+                            <strong>Compact Mode</strong>
+                            <p>Show more content with less spacing</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="compactMode">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Management -->
+            <section class="settings-section">
+                <h3>Data Management</h3>
+                <div class="settings-card">
+                    <div class="data-row">
+                        <div class="data-info">
+                            <strong>Export Progress</strong>
+                            <p>Download your progress data as JSON</p>
+                        </div>
+                        <button class="btn btn-ghost btn-sm" onclick="exportData()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            Export
+                        </button>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-info">
+                            <strong>Import Progress</strong>
+                            <p>Restore progress from a backup file</p>
+                        </div>
+                        <label class="btn btn-ghost btn-sm" style="cursor: pointer;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                            Import
+                            <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
+                        </label>
+                    </div>
+                    <div class="data-row danger">
+                        <div class="data-info">
+                            <strong>Reset Progress</strong>
+                            <p>Clear all progress and start fresh</p>
+                        </div>
+                        <button class="btn btn-ghost btn-sm" onclick="confirmReset()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support -->
+            <section class="settings-section">
+                <h3>Support</h3>
+                <div class="settings-card">
+                    <div class="support-links">
+                        <a href="../faq.html" class="support-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+                            <span>FAQ</span>
+                        </a>
+                        <a href="../contact.html" class="support-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                            <span>Contact Us</span>
+                        </a>
+                        <a href="../about.html" class="support-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            <span>About</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Reset Confirmation Modal -->
+    <div id="resetModal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal" style="max-width: 400px;">
+            <div class="modal-header" style="text-align: center;">
+                <div class="modal-icon" style="background: rgba(248, 113, 113, 0.16);">⚠️</div>
+                <h2 class="modal-title">Reset Progress?</h2>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <p class="text-secondary" style="margin-bottom: 24px;">This will clear all your lesson progress, favorites, and settings. This action cannot be undone.</p>
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <button class="btn btn-ghost" onclick="closeResetModal()">Cancel</button>
+                    <button class="btn" style="background: var(--color-accent-red);" onclick="resetProgress()">Reset Everything</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <style>
+        @media (max-width: 1024px) {
+            #sidebarToggle { display: block !important; }
+        }
+        .settings-section {
+            margin-bottom: 32px;
+        }
+        .settings-section h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+            margin-bottom: 12px;
+        }
+        .settings-card {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 16px;
+            padding: 20px;
+        }
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--color-border-subtle);
+            margin-bottom: 16px;
+        }
+        .status-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .status-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .status-icon.success {
+            background: rgba(52, 211, 153, 0.16);
+            color: var(--color-accent-green);
+        }
+        .status-info strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+        .status-info p {
+            font-size: 13px;
+            color: var(--color-text-tertiary);
+        }
+        .access-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+        .detail-row span:first-child {
+            color: var(--color-text-tertiary);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+        }
+        .preference-row, .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+        .preference-row:last-child, .data-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .preference-row:first-child, .data-row:first-child {
+            padding-top: 0;
+        }
+        .preference-info strong, .data-info strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        .preference-info p, .data-info p {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+        }
+        .data-row.danger .btn {
+            color: var(--color-accent-red);
+        }
+        .data-row .btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 28px;
+        }
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-glass-elevated);
+            border: 1px solid var(--color-border-default);
+            border-radius: 28px;
+            transition: 0.3s;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: var(--color-text-tertiary);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .toggle input:checked + .toggle-slider {
+            background: var(--gradient-primary);
+            border-color: transparent;
+        }
+        .toggle input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+            background-color: white;
+        }
+        .support-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .support-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--color-glass-elevated);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .support-link:hover {
+            background: var(--color-glass-light);
+            color: var(--color-text-primary);
+        }
+    </style>
+
+    <script src="../assets/main.js"></script>
+    <script src="../assets/portal.js"></script>
+    <script>
+        // Load stats
+        function loadStats() {
+            const completedLessons = JSON.parse(localStorage.getItem('tms_completed_lessons') || '[]');
+            const favorites = JSON.parse(localStorage.getItem('tms_favorites') || '[]');
+            const tier = localStorage.getItem('tms_access_tier') || 'standard';
+            const activatedDate = localStorage.getItem('tms_activated_date');
+
+            document.getElementById('lessonsCompleted').textContent = completedLessons.length;
+            document.getElementById('progressPercent').textContent = Math.round((completedLessons.length / 24) * 100) + '%';
+            document.getElementById('favoritesCount').textContent = favorites.length;
+
+            // Count checklist items
+            let checklistCount = 0;
+            for (let i = 0; i < 10; i++) {
+                if (localStorage.getItem(`tms_checklist_${i}`) === 'true') checklistCount++;
+                if (localStorage.getItem(`tms_weekly_${i}`) === 'true') checklistCount++;
+            }
+            document.getElementById('checklistCount').textContent = checklistCount;
+
+            // Access tier
+            document.getElementById('accessTier').textContent = tier === 'premium' ? 'Premium Access' : 'Standard Access';
+
+            // Activated date
+            if (activatedDate) {
+                const date = new Date(activatedDate);
+                document.getElementById('activatedDate').textContent = date.toLocaleDateString();
+            }
+        }
+
+        // Preferences
+        const reducedMotion = document.getElementById('reducedMotion');
+        const compactMode = document.getElementById('compactMode');
+
+        reducedMotion.checked = localStorage.getItem('tms_reduced_motion') === 'true';
+        compactMode.checked = localStorage.getItem('tms_compact_mode') === 'true';
+
+        reducedMotion.addEventListener('change', () => {
+            localStorage.setItem('tms_reduced_motion', reducedMotion.checked);
+            if (reducedMotion.checked) {
+                document.body.classList.add('reduced-motion');
+            } else {
+                document.body.classList.remove('reduced-motion');
+            }
+            showToast('Preference saved', 'success');
+        });
+
+        compactMode.addEventListener('change', () => {
+            localStorage.setItem('tms_compact_mode', compactMode.checked);
+            if (compactMode.checked) {
+                document.body.classList.add('compact-mode');
+            } else {
+                document.body.classList.remove('compact-mode');
+            }
+            showToast('Preference saved', 'success');
+        });
+
+        // Export data
+        function exportData() {
+            const data = {
+                version: 1,
+                exportedAt: new Date().toISOString(),
+                completedLessons: JSON.parse(localStorage.getItem('tms_completed_lessons') || '[]'),
+                favorites: JSON.parse(localStorage.getItem('tms_favorites') || '[]'),
+                accessTier: localStorage.getItem('tms_access_tier'),
+                activatedDate: localStorage.getItem('tms_activated_date'),
+                preferences: {
+                    reducedMotion: localStorage.getItem('tms_reduced_motion'),
+                    compactMode: localStorage.getItem('tms_compact_mode')
+                }
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `tms-progress-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showToast('Progress exported successfully!', 'success');
+        }
+
+        // Import data
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+
+                    if (data.completedLessons) {
+                        localStorage.setItem('tms_completed_lessons', JSON.stringify(data.completedLessons));
+                    }
+                    if (data.favorites) {
+                        localStorage.setItem('tms_favorites', JSON.stringify(data.favorites));
+                    }
+                    if (data.preferences) {
+                        if (data.preferences.reducedMotion) localStorage.setItem('tms_reduced_motion', data.preferences.reducedMotion);
+                        if (data.preferences.compactMode) localStorage.setItem('tms_compact_mode', data.preferences.compactMode);
+                    }
+
+                    showToast('Progress imported successfully!', 'success');
+                    loadStats();
+                } catch (err) {
+                    showToast('Invalid file format', 'error');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // Reset modal
+        function confirmReset() {
+            document.getElementById('resetModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResetModal() {
+            document.getElementById('resetModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function resetProgress() {
+            // Clear all TMS data
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith('tms_') && key !== 'tms_access_granted' && key !== 'tms_access_tier' && key !== 'tms_activated_date') {
+                    keysToRemove.push(key);
+                }
+            }
+            keysToRemove.forEach(key => localStorage.removeItem(key));
+
+            closeResetModal();
+            showToast('Progress has been reset', 'success');
+            loadStats();
+
+            // Reset preference toggles
+            reducedMotion.checked = false;
+            compactMode.checked = false;
+        }
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeResetModal();
+        });
+
+        // Close modal on overlay click
+        document.getElementById('resetModal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) closeResetModal();
+        });
+
+        // Initialize
+        loadStats();
+    </script>
+</body>
+</html>

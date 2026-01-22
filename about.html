@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our mission: helping students use AI ethically and effectively to reclaim their time.">
+    <title>About — The Modern Student</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-center">
+            <div class="navbar-links">
+                <a href="how-it-works.html">How It Works</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="faq.html">FAQ</a>
+                <a href="about.html" class="active">About</a>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <div class="counter-pill"><span class="counter-number" id="counterValue">1,247</span><span>students helped</span><div class="counter-tooltip">Includes course + workshop participants</div></div>
+            <button class="btn btn-primary btn-sm" onclick="openAccessModal()">Get Access</button>
+            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container page-header-content">
+            <p class="page-label">Our Story</p>
+            <h1 class="page-title">About <span class="text-gradient">Us</span></h1>
+            <p class="page-subtitle">We believe students deserve better tools—and the knowledge to use them responsibly.</p>
+        </div>
+    </header>
+
+    <!-- Mission -->
+    <section class="section">
+        <div class="container-narrow">
+            <div style="font-size: 1.25rem; line-height: 1.7; color: var(--color-text-secondary); margin-bottom: 48px;">
+                <p style="margin-bottom: 24px;"><strong style="color: var(--color-text-primary);">The Modern Student was born from a simple observation:</strong> AI is transforming how work gets done, but students are left to figure it out on their own—often making mistakes, feeling overwhelmed, or worrying about ethics.</p>
+                <p style="margin-bottom: 24px;">We saw students spending hours on tasks that could take minutes with the right approach. We saw fear around AI—fear of using it wrong, fear of getting caught, fear of falling behind peers who seemed to "get it."</p>
+                <p><strong style="color: var(--color-text-primary);">We built this toolkit to change that.</strong> Not by teaching shortcuts or hacks, but by providing a clear, ethical, practical framework for using AI as the powerful learning tool it can be.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">What We Stand For</p>
+                <h2 class="section-title">Our Values</h2>
+            </div>
+
+            <div class="grid grid-3 gap-6" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card text-center">
+                    <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: var(--color-glass); border: 1px solid var(--color-border-subtle); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎓</div>
+                    <h4 style="margin-bottom: 8px;">Learning First</h4>
+                    <p class="text-secondary" style="font-size: 14px;">AI should enhance understanding, not replace it. Every technique we teach is designed to help you learn better, not just finish faster.</p>
+                </div>
+
+                <div class="card text-center">
+                    <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: var(--color-glass); border: 1px solid var(--color-border-subtle); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🛡️</div>
+                    <h4 style="margin-bottom: 8px;">Integrity Always</h4>
+                    <p class="text-secondary" style="font-size: 14px;">We draw clear lines between helpful AI use and academic dishonesty. You'll never wonder if what you're doing is okay.</p>
+                </div>
+
+                <div class="card text-center">
+                    <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: var(--color-glass); border: 1px solid var(--color-border-subtle); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">⚡</div>
+                    <h4 style="margin-bottom: 8px;">Practical Impact</h4>
+                    <p class="text-secondary" style="font-size: 14px;">We focus on techniques that make a real difference. Every lesson is designed for immediate application to your actual coursework.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrity Statement -->
+    <section class="section">
+        <div class="container-narrow">
+            <div class="card" style="border-color: rgba(52, 211, 153, 0.24); background: rgba(52, 211, 153, 0.04);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                    <div style="width: 48px; height: 48px; background: rgba(52, 211, 153, 0.16); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🛡️</div>
+                    <h3>Our Academic Integrity Commitment</h3>
+                </div>
+                <div style="color: var(--color-text-secondary); line-height: 1.7;">
+                    <p style="margin-bottom: 16px;">We are committed to promoting ethical AI use in education. Our approach:</p>
+                    <ul style="margin-left: 20px;">
+                        <li style="margin-bottom: 8px;"><strong style="color: var(--color-text-primary);">Enhances learning</strong> — AI as a study partner, not a replacement for thinking</li>
+                        <li style="margin-bottom: 8px;"><strong style="color: var(--color-text-primary);">Respects policies</strong> — We teach compliance with institutional guidelines</li>
+                        <li style="margin-bottom: 8px;"><strong style="color: var(--color-text-primary);">Maintains authenticity</strong> — Your work remains your own</li>
+                        <li style="margin-bottom: 8px;"><strong style="color: var(--color-text-primary);">Promotes transparency</strong> — We advocate for open dialogue with professors</li>
+                    </ul>
+                    <p style="margin-top: 16px;">We don't teach shortcuts that compromise your education. We teach strategies that make you a better, more efficient learner while maintaining the highest ethical standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We're Not -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container-narrow">
+            <div class="section-header">
+                <h2 class="section-title">What We're <span style="color: var(--color-accent-red);">Not</span></h2>
+                <p class="section-subtitle">Let's be clear about what this isn't.</p>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <div class="card">
+                    <h4 style="margin-bottom: 12px; color: var(--color-accent-red);">✗ Not an Essay-Writing Service</h4>
+                    <p class="text-secondary" style="font-size: 14px;">We don't write your papers or provide "answers" to your assignments. We teach you skills and frameworks to do better work yourself.</p>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 12px; color: var(--color-accent-red);">✗ Not a "Cheating" Tool</h4>
+                    <p class="text-secondary" style="font-size: 14px;">Everything we teach is designed to help you learn and comply with academic integrity policies. If you're looking for ways to plagiarize, look elsewhere.</p>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 12px; color: var(--color-accent-red);">✗ Not Just Templates</h4>
+                    <p class="text-secondary" style="font-size: 14px;">While we provide templates, the real value is in understanding why they work—so you can adapt and create your own approaches.</p>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 12px; color: var(--color-accent-red);">✗ Not Magic</h4>
+                    <p class="text-secondary" style="font-size: 14px;">AI won't make you an expert overnight. You still need to do the work of learning. We just help you do that work more effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Future -->
+    <section class="section">
+        <div class="container-narrow text-center">
+            <p class="section-label">Looking Ahead</p>
+            <h2 class="section-title" style="margin-bottom: 24px;">AI Is Changing Everything</h2>
+            <p style="font-size: 1.125rem; color: var(--color-text-secondary); line-height: 1.7; max-width: 600px; margin: 0 auto;">
+                The students who learn to use AI effectively today will have a significant advantage tomorrow—in grad school, in their careers, and in life. We're here to help you be one of them, while never compromising on the values that make education meaningful.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 16px;">Ready to <span class="text-gradient">Join Us?</span></h2>
+            <p class="text-secondary" style="font-size: 18px; margin-bottom: 32px;">Get the toolkit and start working smarter today.</p>
+            <a href="pricing.html" class="btn btn-primary btn-lg">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><defs><linearGradient id="footerGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#footerGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#footerGrad)"/></svg>
+                    <span>The Modern Student</span>
+                </div>
+                <div class="footer-links">
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="curriculum.html">Curriculum</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-copyright">© 2025 The Modern Student. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="pricing.html" class="floating-cta" id="floatingCta">Get Started</a>
+
+    <div id="accessModal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal">
+            <button class="modal-close" onclick="closeAccessModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">🔐</div>
+                <h2 class="modal-title">Enter Access Code</h2>
+                <span id="modalTier" class="badge badge-primary" style="margin-top: 8px;">STANDARD</span>
+            </div>
+            <div class="modal-body">
+                <form id="accessForm">
+                    <input type="text" id="accessCode" class="form-input" placeholder="ACCESS CODE" autocomplete="off" style="text-align: center; letter-spacing: 3px; margin-bottom: 16px;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Unlock Portal</button>
+                </form>
+                <p id="accessError" style="color: var(--color-accent-red); font-size: 14px; margin-top: 16px; display: none;">Invalid access code.</p>
+            </div>
+            <div class="modal-footer"><p>Don't have a code? <a href="pricing.html">Get access</a></p></div>
+        </div>
+    </div>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>

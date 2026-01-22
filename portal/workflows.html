@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflows — The Modern Student Portal</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-logo">
+            <svg viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#f472b6"/></linearGradient></defs><path d="M25 70 V35 L42 55 L50 42 L58 55 L75 35 V70" stroke="url(#logoGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="78" r="4" fill="url(#logoGrad)"/></svg>
+            <span>The Modern Student</span>
+        </a>
+        <div class="navbar-right">
+            <span class="badge badge-success">Access Granted</span>
+            <button class="btn btn-ghost btn-sm" id="sidebarToggle" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="portal-layout">
+        <!-- Sidebar -->
+        <aside class="portal-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Learn</div>
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </a>
+                    <a href="lessons.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Lessons
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Resources</div>
+                <nav class="sidebar-nav">
+                    <a href="workflows.html" class="sidebar-link active">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Workflows
+                    </a>
+                    <a href="templates.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Templates
+                    </a>
+                    <a href="resources.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Resources
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-label">Account</div>
+                <nav class="sidebar-nav">
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Settings
+                    </a>
+                    <button class="sidebar-link" onclick="logout()" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Log Out
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="portal-main">
+            <!-- Header -->
+            <div style="margin-bottom: 24px;">
+                <h2 style="margin-bottom: 4px;">AI Workflows</h2>
+                <p class="text-secondary" style="font-size: 14px;">Ready-to-use prompts for common academic tasks</p>
+            </div>
+
+            <!-- Search & Filter -->
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input type="text" id="searchInput" placeholder="Search workflows..." class="search-input">
+                </div>
+                <div class="filter-chips">
+                    <button class="filter-chip active" data-category="all">All</button>
+                    <button class="filter-chip" data-category="study">Study</button>
+                    <button class="filter-chip" data-category="writing">Writing</button>
+                    <button class="filter-chip" data-category="research">Research</button>
+                    <button class="filter-chip" data-category="productivity">Productivity</button>
+                </div>
+            </div>
+
+            <!-- Workflows Grid -->
+            <div class="workflows-grid" id="workflowsGrid">
+                <!-- Study Workflows -->
+                <div class="workflow-card" data-category="study">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">🧠</span>
+                        <span class="workflow-category">Study</span>
+                    </div>
+                    <h4>Feynman Technique Helper</h4>
+                    <p>Test your understanding by explaining concepts to AI</p>
+                    <div class="workflow-prompt">I want to test my understanding of [CONCEPT].
+
+I'll explain it to you as if you're a complete beginner with no background knowledge.
+
+After I explain, please:
+1. Point out any gaps or inaccuracies in my explanation
+2. Ask me 2-3 follow-up questions to test deeper understanding
+3. Suggest analogies I could use to explain it better
+
+Here's my explanation: [YOUR EXPLANATION]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="study">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">📇</span>
+                        <span class="workflow-category">Study</span>
+                    </div>
+                    <h4>Flashcard Generator</h4>
+                    <p>Create effective flashcards from your notes or readings</p>
+                    <div class="workflow-prompt">Create 10 flashcards from the following material. For each card:
+- Front: A clear question or prompt
+- Back: A concise answer (2-3 sentences max)
+
+Focus on:
+- Key concepts and definitions
+- Important relationships between ideas
+- Common misconceptions to avoid
+
+Material:
+[PASTE YOUR NOTES OR TEXT HERE]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="study">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">📝</span>
+                        <span class="workflow-category">Study</span>
+                    </div>
+                    <h4>Note Enhancer</h4>
+                    <p>Transform messy lecture notes into organized study material</p>
+                    <div class="workflow-prompt">Here are my rough lecture notes from [SUBJECT/CLASS].
+
+Please help me organize them into a clear study guide:
+1. Group related concepts together
+2. Add clear headings and subheadings
+3. Highlight key terms and definitions
+4. Add brief clarifications where my notes are unclear
+5. Create a summary section at the end
+
+My notes:
+[PASTE YOUR NOTES HERE]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="study">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">🗺️</span>
+                        <span class="workflow-category">Study</span>
+                    </div>
+                    <h4>Concept Map Builder</h4>
+                    <p>Visualize relationships between ideas</p>
+                    <div class="workflow-prompt">I'm studying [TOPIC] and need help understanding how different concepts connect.
+
+Please create a text-based concept map showing:
+- The main concept at the center
+- Related sub-concepts branching out
+- The relationships between concepts (use arrows with labels like "leads to," "is part of," "contrasts with")
+- Key examples for each concept
+
+Topic/concepts to map:
+[LIST YOUR CONCEPTS HERE]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <!-- Writing Workflows -->
+                <div class="workflow-card" data-category="writing">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">💡</span>
+                        <span class="workflow-category">Writing</span>
+                    </div>
+                    <h4>Brainstorm Ideas</h4>
+                    <p>Generate essay topics and angles without writing for you</p>
+                    <div class="workflow-prompt">I need to write a [LENGTH] paper for my [CLASS] on [GENERAL TOPIC].
+
+Please help me brainstorm by suggesting:
+- 5 specific angles or thesis directions I could take
+- For each angle, 2-3 key points I might explore
+- Potential counterarguments to consider
+
+Don't write the paper—just help me find my direction. I want to develop my own argument.
+
+Assignment requirements:
+[PASTE REQUIREMENTS HERE]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="writing">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">📋</span>
+                        <span class="workflow-category">Writing</span>
+                    </div>
+                    <h4>Outline Generator</h4>
+                    <p>Create a structured outline from your thesis</p>
+                    <div class="workflow-prompt">I'm writing a paper with this thesis: [YOUR THESIS]
+
+Please create a detailed outline with:
+- Introduction structure (hook idea, context needed, thesis placement)
+- 3-4 body paragraph topics with:
+  - Topic sentence suggestion
+  - Types of evidence I should look for
+  - Potential counterarguments to address
+- Conclusion approach
+
+This is for a [CLASS NAME] assignment. Length: [X] pages.</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="writing">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">🔍</span>
+                        <span class="workflow-category">Writing</span>
+                    </div>
+                    <h4>Feedback Request</h4>
+                    <p>Get constructive criticism on your draft</p>
+                    <div class="workflow-prompt">Please review my writing and provide constructive feedback.
+
+Focus on:
+1. Argument clarity and logical flow
+2. Evidence usage and support
+3. Paragraph transitions
+4. Areas that need more development
+5. Any unclear or confusing sections
+
+Be specific about what works and what needs improvement. Don't rewrite it for me—help me understand what to fix.
+
+My draft:
+[PASTE YOUR WRITING HERE]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="writing">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">✨</span>
+                        <span class="workflow-category">Writing</span>
+                    </div>
+                    <h4>Proofreading Assistant</h4>
+                    <p>Catch errors while keeping your voice</p>
+                    <div class="workflow-prompt">Please proofread my writing for:
+- Grammar and punctuation errors
+- Spelling mistakes
+- Awkward phrasing (suggest alternatives but keep my voice)
+- Consistency issues
+
+Format your feedback as:
+- List each error with the correction
+- Explain why it's an error (so I learn)
+- Note any patterns I should watch for
+
+Keep my original style and tone. Don't rewrite—just fix errors.
+
+Text to proofread:
+[PASTE YOUR TEXT HERE]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <!-- Research Workflows -->
+                <div class="workflow-card" data-category="research">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">🎯</span>
+                        <span class="workflow-category">Research</span>
+                    </div>
+                    <h4>Research Question Refiner</h4>
+                    <p>Sharpen your research focus</p>
+                    <div class="workflow-prompt">I'm interested in researching [BROAD TOPIC] for my [CLASS/PROJECT].
+
+Help me develop a focused research question by:
+1. Identifying 3 specific angles within this topic
+2. For each angle, suggest a clear research question
+3. Explain what type of sources I'd need
+4. Note any potential challenges with each direction
+
+My initial thoughts: [YOUR IDEAS]
+Assignment constraints: [LENGTH, REQUIREMENTS]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="research">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">📚</span>
+                        <span class="workflow-category">Research</span>
+                    </div>
+                    <h4>Source Summarizer</h4>
+                    <p>Understand academic papers quickly</p>
+                    <div class="workflow-prompt">Please help me understand this academic text by providing:
+
+1. A 2-3 sentence summary of the main argument
+2. Key findings or claims (bullet points)
+3. Methodology used (if applicable)
+4. How this might relate to my research on [YOUR TOPIC]
+5. 2-3 questions I should consider when reading the full text
+
+Text to analyze:
+[PASTE ABSTRACT OR EXCERPT HERE]
+
+Note: I'll read the full source myself—this is just to help me understand it better.</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="research">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">📊</span>
+                        <span class="workflow-category">Research</span>
+                    </div>
+                    <h4>Data Interpretation Guide</h4>
+                    <p>Understand statistics and findings</p>
+                    <div class="workflow-prompt">I'm trying to understand this data/statistics from my research:
+
+[PASTE DATA, CHART DESCRIPTION, OR STATISTICS]
+
+Please help me understand:
+1. What does this data actually show?
+2. What are the key takeaways?
+3. What are the limitations of this data?
+4. How might I cite or reference this in my paper?
+5. What questions should I ask about the methodology?
+
+I'm a [YEAR] student in [FIELD] with [BASIC/INTERMEDIATE/ADVANCED] statistics knowledge.</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="research">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">✅</span>
+                        <span class="workflow-category">Research</span>
+                    </div>
+                    <h4>Fact Checker</h4>
+                    <p>Verify claims and avoid hallucinations</p>
+                    <div class="workflow-prompt">I need to verify information for my research. For each claim below:
+
+1. Assess the likelihood this is accurate
+2. Suggest how I could verify it (specific databases, types of sources)
+3. Note any red flags or reasons for caution
+4. Provide search terms I could use to find verification
+
+Claims to verify:
+[LIST YOUR CLAIMS HERE]
+
+Important: I understand AI can make errors. I'll verify everything independently—I just need guidance on WHERE to look.</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <!-- Productivity Workflows -->
+                <div class="workflow-card" data-category="productivity">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">📅</span>
+                        <span class="workflow-category">Productivity</span>
+                    </div>
+                    <h4>Weekly Planner</h4>
+                    <p>Create a realistic study schedule</p>
+                    <div class="workflow-prompt">Help me plan my week. Here's my situation:
+
+Classes: [LIST YOUR CLASSES AND TIMES]
+Upcoming deadlines: [LIST ASSIGNMENTS AND DUE DATES]
+Other commitments: [WORK, ACTIVITIES, ETC.]
+Available study time: [WHEN YOU CAN STUDY]
+
+Please create a realistic weekly schedule that:
+- Prioritizes urgent deadlines
+- Breaks large tasks into smaller chunks
+- Includes buffer time for unexpected issues
+- Balances work across the week
+- Accounts for my energy levels (when am I most focused?)</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="productivity">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">🎯</span>
+                        <span class="workflow-category">Productivity</span>
+                    </div>
+                    <h4>Assignment Breakdown</h4>
+                    <p>Turn big projects into manageable tasks</p>
+                    <div class="workflow-prompt">I have a major assignment that feels overwhelming. Help me break it down.
+
+Assignment: [DESCRIBE THE ASSIGNMENT]
+Due date: [DATE]
+Current progress: [WHAT YOU'VE DONE]
+Time available: [HOURS PER DAY/WEEK]
+
+Please create:
+1. A list of all tasks needed to complete this
+2. Estimated time for each task
+3. Suggested order (what depends on what)
+4. Milestones to aim for
+5. A day-by-day plan working backward from the deadline</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="productivity">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">✉️</span>
+                        <span class="workflow-category">Productivity</span>
+                    </div>
+                    <h4>Email Drafter</h4>
+                    <p>Write professional academic emails</p>
+                    <div class="workflow-prompt">Help me draft a professional email.
+
+To: [PROFESSOR/TA/ADVISOR]
+Purpose: [WHAT YOU NEED - extension, clarification, meeting, etc.]
+Context: [RELEVANT BACKGROUND]
+Tone: Professional but not overly formal
+
+Please draft an email that:
+- Has a clear, specific subject line
+- Gets to the point quickly
+- Provides necessary context without over-explaining
+- Includes a specific ask or next step
+- Is appropriately polite
+
+I'll revise it to match my voice before sending.</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+
+                <div class="workflow-card" data-category="productivity">
+                    <div class="workflow-header">
+                        <span class="workflow-icon">🧪</span>
+                        <span class="workflow-category">Productivity</span>
+                    </div>
+                    <h4>Practice Test Generator</h4>
+                    <p>Create custom practice questions</p>
+                    <div class="workflow-prompt">Create a practice test for my upcoming exam.
+
+Subject: [COURSE NAME]
+Topics covered: [LIST MAIN TOPICS]
+Exam format: [MULTIPLE CHOICE/SHORT ANSWER/ESSAY/MIX]
+Difficulty: [INTRO/INTERMEDIATE/ADVANCED]
+
+Please create:
+- 10 questions at varying difficulty levels
+- Mix of question types if applicable
+- An answer key with explanations
+- Common mistakes to watch out for
+
+Base questions on these concepts:
+[LIST KEY CONCEPTS OR PASTE STUDY GUIDE]</div>
+                    <button class="btn btn-primary btn-sm workflow-copy" onclick="copyWorkflow(this)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                        Copy Prompt
+                    </button>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">🔍</div>
+                <h3>No workflows found</h3>
+                <p>Try a different search term or filter</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <style>
+        @media (max-width: 1024px) {
+            #sidebarToggle { display: block !important; }
+        }
+        .search-filter-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 12px;
+        }
+        .search-box svg {
+            color: var(--color-text-tertiary);
+            flex-shrink: 0;
+        }
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--color-text-primary);
+            font-size: 14px;
+            outline: none;
+        }
+        .search-input::placeholder {
+            color: var(--color-text-tertiary);
+        }
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .filter-chip {
+            padding: 8px 16px;
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 20px;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-chip:hover {
+            background: var(--color-glass-light);
+            border-color: var(--color-border-default);
+        }
+        .filter-chip.active {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: white;
+        }
+        .workflows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .workflow-card {
+            background: var(--color-glass);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s;
+        }
+        .workflow-card:hover {
+            border-color: var(--color-border-default);
+            transform: translateY(-2px);
+        }
+        .workflow-card.hidden {
+            display: none;
+        }
+        .workflow-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .workflow-icon {
+            font-size: 1.5rem;
+        }
+        .workflow-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-accent-purple);
+            background: rgba(167, 139, 250, 0.12);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .workflow-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .workflow-card > p {
+            font-size: 13px;
+            color: var(--color-text-tertiary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .workflow-prompt {
+            flex: 1;
+            padding: 16px;
+            background: var(--color-glass-elevated);
+            border-radius: 8px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--color-text-secondary);
+            white-space: pre-wrap;
+            margin-bottom: 16px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .workflow-copy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        .empty-state h3 {
+            margin-bottom: 8px;
+        }
+        .empty-state p {
+            color: var(--color-text-tertiary);
+        }
+    </style>
+
+    <script src="../assets/main.js"></script>
+    <script src="../assets/portal.js"></script>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const filterChips = document.querySelectorAll('.filter-chip');
+        const workflowCards = document.querySelectorAll('.workflow-card');
+        const emptyState = document.getElementById('emptyState');
+        const workflowsGrid = document.getElementById('workflowsGrid');
+
+        let activeCategory = 'all';
+
+        function filterWorkflows() {
+            const searchTerm = searchInput.value.toLowerCase();
+            let visibleCount = 0;
+
+            workflowCards.forEach(card => {
+                const category = card.dataset.category;
+                const title = card.querySelector('h4').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const prompt = card.querySelector('.workflow-prompt').textContent.toLowerCase();
+
+                const matchesCategory = activeCategory === 'all' || category === activeCategory;
+                const matchesSearch = !searchTerm ||
+                    title.includes(searchTerm) ||
+                    description.includes(searchTerm) ||
+                    prompt.includes(searchTerm);
+
+                if (matchesCategory && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                emptyState.style.display = 'block';
+                workflowsGrid.style.display = 'none';
+            } else {
+                emptyState.style.display = 'none';
+                workflowsGrid.style.display = 'grid';
+            }
+        }
+
+        searchInput.addEventListener('input', filterWorkflows);
+
+        filterChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                filterChips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                activeCategory = chip.dataset.category;
+                filterWorkflows();
+            });
+        });
+
+        function copyWorkflow(btn) {
+            const prompt = btn.parentElement.querySelector('.workflow-prompt').textContent;
+            navigator.clipboard.writeText(prompt).then(() => {
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Copied!';
+                btn.style.background = 'var(--color-accent-green)';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

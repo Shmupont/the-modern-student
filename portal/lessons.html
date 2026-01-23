@@ -607,13 +607,74 @@
             align-items: center;
             gap: 4px;
             color: var(--color-accent-green);
-            font-weight: 500;
+            font-weight: 600;
         }
         .lesson-status.show {
             display: flex;
         }
         .lesson-status::before {
             content: '✓';
+            font-weight: 700;
+        }
+
+        /* Completed lesson card styling */
+        .lesson-card.completed {
+            border-color: rgba(52, 211, 153, 0.3);
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.05) 0%, transparent 100%);
+        }
+        .lesson-card.completed .lesson-thumbnail {
+            position: relative;
+        }
+        .lesson-card.completed .lesson-thumbnail::after {
+            content: '✓';
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            width: 20px;
+            height: 20px;
+            background: var(--color-accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            border: 2px solid var(--color-bg-primary);
+        }
+        .lesson-card.completed .lesson-number {
+            opacity: 0.8;
+        }
+
+        /* Module progress indicator */
+        .module-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .module-progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+        }
+        .module-progress-indicator .progress-dots {
+            display: flex;
+            gap: 4px;
+        }
+        .module-progress-indicator .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-glass-light);
+            border: 1px solid var(--color-border-subtle);
+        }
+        .module-progress-indicator .dot.completed {
+            background: var(--color-accent-green);
+            border-color: var(--color-accent-green);
         }
     </style>
 
@@ -627,10 +688,25 @@
         const moduleSections = document.querySelectorAll('.module-section');
         const lessonCards = document.querySelectorAll('.lesson-card');
 
+        // Get progress using the portal.js system
+        function getProgress() {
+            // Use portal.js function if available, otherwise check localStorage
+            if (typeof getProgressSync === 'function') {
+                return getProgressSync();
+            }
+            // Fallback to localStorage
+            const stored = localStorage.getItem('tms_lesson_progress');
+            return stored ? JSON.parse(stored) : {};
+        }
+
+        function isLessonCompleted(lessonId) {
+            const progress = getProgress();
+            return progress[lessonId]?.completed === true;
+        }
+
         function applyFilters() {
             const selectedModule = moduleFilter.value;
             const selectedStatus = statusFilter.value;
-            const completedLessons = JSON.parse(localStorage.getItem('tms_completed_lessons') || '[]');
 
             moduleSections.forEach(section => {
                 const moduleNum = section.dataset.module;
@@ -644,7 +720,7 @@
 
                     cards.forEach(card => {
                         const lessonId = card.dataset.lesson;
-                        const isCompleted = completedLessons.includes(lessonId);
+                        const isCompleted = isLessonCompleted(lessonId);
                         const statusMatch = selectedStatus === 'all' ||
                             (selectedStatus === 'completed' && isCompleted) ||
                             (selectedStatus === 'incomplete' && !isCompleted);
@@ -672,20 +748,81 @@
 
         // Update lesson completion status on page load
         function updateLessonStatuses() {
-            const completedLessons = JSON.parse(localStorage.getItem('tms_completed_lessons') || '[]');
-
             lessonCards.forEach(card => {
                 const lessonId = card.dataset.lesson;
                 const statusEl = card.querySelector('.lesson-status');
+                const isCompleted = isLessonCompleted(lessonId);
 
-                if (completedLessons.includes(lessonId)) {
+                if (isCompleted) {
                     card.classList.add('completed');
-                    statusEl.classList.add('show');
-                    statusEl.textContent = 'Completed';
+                    if (statusEl) {
+                        statusEl.classList.add('show');
+                        statusEl.textContent = 'Completed';
+                    }
+                } else {
+                    card.classList.remove('completed');
+                    if (statusEl) {
+                        statusEl.classList.remove('show');
+                        statusEl.textContent = '';
+                    }
                 }
+            });
+
+            // Update module progress indicators
+            updateModuleProgress();
+        }
+
+        // Add module progress dots
+        function updateModuleProgress() {
+            moduleSections.forEach(section => {
+                const moduleNum = section.dataset.module;
+                const cards = section.querySelectorAll('.lesson-card');
+                const header = section.querySelector('.module-header');
+
+                // Remove existing progress indicator
+                const existingIndicator = header.querySelector('.module-progress-indicator');
+                if (existingIndicator) existingIndicator.remove();
+
+                // Count completed lessons in this module
+                let completedCount = 0;
+                const totalCount = cards.length;
+
+                cards.forEach(card => {
+                    const lessonId = card.dataset.lesson;
+                    if (isLessonCompleted(lessonId)) {
+                        completedCount++;
+                    }
+                });
+
+                // Create progress indicator
+                const indicator = document.createElement('div');
+                indicator.className = 'module-progress-indicator';
+
+                // Create dots
+                let dotsHTML = '<div class="progress-dots">';
+                for (let i = 0; i < totalCount; i++) {
+                    dotsHTML += `<div class="dot ${i < completedCount ? 'completed' : ''}"></div>`;
+                }
+                dotsHTML += '</div>';
+
+                indicator.innerHTML = `
+                    ${dotsHTML}
+                    <span>${completedCount}/${totalCount}</span>
+                `;
+
+                header.appendChild(indicator);
             });
         }
 
+        // Initialize after portal.js loads progress
+        function initLessonsPage() {
+            updateLessonStatuses();
+        }
+
+        // Wait a bit for portal.js to fetch progress from Supabase
+        setTimeout(initLessonsPage, 500);
+
+        // Also update immediately with cached/localStorage data
         updateLessonStatuses();
     </script>
 </body>
